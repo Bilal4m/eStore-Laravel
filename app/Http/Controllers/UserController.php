@@ -35,6 +35,8 @@ class UserController extends Controller
         else{
             // $data = $request->input('user_name');
             $request->session()->put('user',$user);
+            alert()->success('Login succefully','You logged in');
+
             return redirect('/');
         }
     }

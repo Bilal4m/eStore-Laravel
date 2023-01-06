@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\facades\Hash;
 use App\Models\Admin;
 use App\Models\Product;
+
+
 class AdminCRUDController extends Controller
 {
     //
@@ -16,7 +18,8 @@ class AdminCRUDController extends Controller
         $admin->admin_email = $request->admin_email;
         $admin->admin_password = Hash::make($request->admin_password);
         $admin->save();
-        return redirect('/admin/admin');
+        alert()->success('Success', 'Admin added successfully');
+        return redirect('/admin/add_admin');
       }
   
        // fecthAdminForUpdate
@@ -32,6 +35,7 @@ class AdminCRUDController extends Controller
         $admin->admin_email = $req->admin_email;
         $admin->admin_password = Hash::make($req->admin_password);
         $admin->save();
+        alert()->success('Success', 'Admin updated successfully');
         return redirect('admin/admin');
      
        }
@@ -41,6 +45,7 @@ class AdminCRUDController extends Controller
        {
         $admin = Admin::find($id);
         $admin->delete();
+        alert()->warning('Deleted','Admin Deleted');
         return redirect ('admin/admin');
        }
 

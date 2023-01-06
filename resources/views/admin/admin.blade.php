@@ -86,7 +86,7 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="#">{{session('admin')['admin_name']}}
+                  <a class="nav-link" data-toggle="dropdown" href="#">Hi,{{session('admin')['admin_name']}}
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="/admin/admin_profile"><i class="fa-solid fa-user"></i>Profile</a></li>

@@ -20,6 +20,7 @@ class AdminController extends Controller
         else{
             // $data = $request->input('name');
             $request->session()->put('admin',$admin);
+            alert()->success('Login succefully','You logged in E-Store Dashboard');
             return redirect('admin/admin');
         }
     }
@@ -47,8 +48,10 @@ class AdminController extends Controller
         if(session()->has('admin'))
         {
             session()->forget('admin');
+            alert()->success('Success','You logged out From Dashboard');
             return redirect ('/');
         }
+       
         return redirect('/admin_login');
     }
 
@@ -57,6 +60,7 @@ class AdminController extends Controller
     {
         if(session()->has('admin'))
         {
+            alert()->info('Info','You already logged in');
             return redirect('admin/admin');
         }
         return view('admin_login');
