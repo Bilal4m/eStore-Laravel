@@ -48,12 +48,10 @@
     <h4>  &nbsp;&nbsp; More to love &nbsp;&nbsp;   </h4>
  
 	<br>
-    <h3>Hi, {{session('user_name')}}</h3>
-
-<h5> <a href="/logout"> Logout </a></h5>
+ 
 	<div class="row" id="ads">
     <!-- Category Card -->
-
+   
     @foreach ($products as $item)
 
     <div class="col-md-4">

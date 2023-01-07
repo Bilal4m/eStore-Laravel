@@ -19,7 +19,7 @@ class AdminCRUDController extends Controller
         $admin->admin_password = Hash::make($request->admin_password);
         $admin->save();
         alert()->success('Success', 'Admin added successfully');
-        return redirect('/admin/add_admin');
+        return redirect('/admin/admin');
       }
   
        // fecthAdminForUpdate

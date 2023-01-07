@@ -1,6 +1,7 @@
 @extends('master')
 @section('content')
 
+
 <h1>Product Details</h1>
 <div class="container">
     <div class="card">
@@ -51,11 +52,18 @@
                         <span class="color blue"></span>
                     </h5>
                     <div class="action">
-                        <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                        <form action="/add_to_cart" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value={{$product['id']}}>
+                            <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>
+
+                       
                         <button class="add-to-buy btn btn-default" type="button">buy now</button>
                         <a href="/" target="_blank"> <button class="add-to-back btn btn-default" type="button">  products</button></a>
                         {{-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> --}}
+                    </form>
                     </div>
+
                 </div>
             </div>
         </div>

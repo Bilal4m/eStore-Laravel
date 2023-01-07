@@ -52,6 +52,7 @@ Route::post('/register', [UserController::class , 'register']);
 Route::get('/', [ProductController::class , 'index']);
 Route::get("detail/{id}", [ProductController::class , 'detail']);
 Route::get("/search", [ProductController::class , 'search']);
+Route::post("add_to_cart", [ProductController::class , 'addToCart']);
 
 
 // admin section
@@ -75,8 +76,9 @@ Route::post("/admin/add_admin", [AdminCRUDController::class , 'add_admin']);
 Route::get("admin/delete_admin/{id}", [AdminCRUDController::class , 'adminDelete']);
 Route::get("admin/update_admin/{id}", [AdminCRUDController::class , 'fecthAdminForUpdate']);
 Route::post("admin/update_admin", [AdminCRUDController::class , 'adminDataUpdate']);
-
 Route::get("admin/admin_list", [AdminCRUDController::class , 'adminList']);
+
+// user crud which is perform by admin
 Route::get("admin/users_list", [AdminForUserController::class , 'usersList']);
 Route::get("admin/users_manage", [AdminForUserController::class , 'usersManage']);
 Route::get("admin/delete_user/{id}", [AdminForUserController::class , 'userDelete']);
