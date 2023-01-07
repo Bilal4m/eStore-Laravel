@@ -47,7 +47,7 @@ class ProductController extends Controller
      }
 
       // this will get user id who is login then return cart item total of that user
-    static function cartItem(){
+     static function cartItem(){
         $userId = session()->get('user')['id'];
         return Cart::where('user_id',$userId)->count();
     }
