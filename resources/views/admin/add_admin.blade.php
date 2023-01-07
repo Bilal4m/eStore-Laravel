@@ -1,4 +1,4 @@
-
+{{-- 
   
   @include('admin.style')
   @include('admin.links')
@@ -13,7 +13,7 @@
               <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
 	            <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                  <a href="/admin/admin_list">Add New Admin</a>
+                  <a href="/admin/admin_list">Admin List</a>
                 </li>
                 <li>
                     <a href="/admin/add_admin">Add New Admin</a>
@@ -86,7 +86,7 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="#">{{session('admin')['admin_name']}}
+                  <a class="nav-link" data-toggle="dropdown" href="#">Hi,{{session('admin')['admin_name']}}
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="/admin/admin_profile"><i class="fa-solid fa-user"></i>Profile</a></li>
@@ -100,11 +100,15 @@
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> --}}
+
+        @include('admin.admin_master')
+
+        <div class="col-lg-12 col-md-2 main-div">
         <nav aria-label="breadcrumb">
           <ol class="col-lg-8 grid-margin breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item"><a href="/admin/admin">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add New Admin</li>
           </ol>
         </nav>
         <div class="col-lg-12 grid-margin stretch-card">
@@ -135,60 +139,29 @@
             </div>
           </div>
       </div>
-		</div>
-		</div>
-		</div>
-		</div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-      (function($) {
-
-"use strict";
-
-var fullHeight = function() {
-
-  $('.js-fullheight').css('height', $(window).height());
-  $(window).resize(function(){
-    $('.js-fullheight').css('height', $(window).height());
-  });
-
-};
-fullHeight();
-
-$('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
-});
-
-})(jQuery);
-
-    </script>
-
-    <style>
-      .card .card-body {
-    padding: 1.5rem 1.5rem;
-}
-.card-body {
-    flex: 1 1 auto;
-    padding: 1rem 1rem;
-}
-.card{
-  position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgb(243, 240, 240);
-    background-clip: border-box;
-    border: 1px solid #e3e3e3;
-    border-radius: 20px;
-    margin-left: -12px;
-}
-
-    </style>
-  </body>
-
+		
+      <style>
+        .main-div{
+          margin-top: 50px;
+         
+        }
+        .col-md-2 {
+          float: right !important;
+      }
+        .card-body{
+          background: rgb(247, 243, 243);
+        }
+        .card{
+          max-width: 100%; 
+       }
+        .breadcrumb{
+          background: rgb(206, 201, 201);
+          margin-right: 12px;
+        }
+        
+       
+      
+      
+      </style>
+      
+   

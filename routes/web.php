@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCRUDController;
+use App\Http\Controllers\AdminForUserController;
+
 
 
 /*
@@ -75,6 +77,14 @@ Route::get("admin/update_admin/{id}", [AdminCRUDController::class , 'fecthAdminF
 Route::post("admin/update_admin", [AdminCRUDController::class , 'adminDataUpdate']);
 
 Route::get("admin/admin_list", [AdminCRUDController::class , 'adminList']);
+Route::get("admin/users_list", [AdminForUserController::class , 'usersList']);
+Route::get("admin/users_manage", [AdminForUserController::class , 'usersManage']);
+Route::get("admin/delete_user/{id}", [AdminForUserController::class , 'userDelete']);
+Route::get("admin/update_user/{id}", [AdminForUserController::class , 'fecthUserForUpdate']);
+Route::post("admin/update_user", [AdminForUserController::class , 'userDataUpdate']);
+
+
+
 
 
 
