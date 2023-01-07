@@ -33,6 +33,7 @@ class UserController extends Controller
             return redirect('/login');
         }
         else{
+            
             // $data = $request->input('user_name');
             $request->session()->put('user',$user);
             alert()->success('Login succefully','You logged in');
@@ -44,6 +45,7 @@ class UserController extends Controller
     function ifUserLogin(){
         if(session()->has('user'))
     {
+        alert()->info('Info','You already logged in');
         return redirect('/');
     }
     return view('login');
@@ -54,9 +56,15 @@ class UserController extends Controller
         if(session()->has('user'))
         {
             session()->forget('user');
+            alert()->success('Success','You logged out');
+
             return redirect('/');
         }
         return redirect('/login');
     }
+
+   
+
+ 
 
 }
