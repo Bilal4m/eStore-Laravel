@@ -30,7 +30,7 @@
             <a class="nav-link mx-1 text-uppercase" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/"><i class="fa-solid fa-cart-shopping me-1"></i>Cart({{$total}})</a>
+            <a class="nav-link mx-1 text-uppercase" href="/cart_list"><i class="fa-solid fa-cart-shopping me-1"></i>Cart({{$total}})</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-1 text-uppercase" href="admin_login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> Admin</a>
