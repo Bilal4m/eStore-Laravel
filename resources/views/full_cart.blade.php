@@ -1,11 +1,9 @@
-
-
 @extends('master')
 @section('content')
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-8 text-center mb-4">
+				<div class="col-md-6 text-center mb-4">
 					<h2 class="heading-section">Table #06</h2>
 				</div>
 			</div>
@@ -22,16 +20,13 @@
 						      <th>Price</th>
 						      <th>Quantity</th>
 						      <th>total</th>
-						      <th>Remove item</th>
-						      <th>Buy</th>
-						      {{-- <th>&nbsp;</th>
-						      <th>&nbsp;</th> --}}
+						      <th>&nbsp;</th>
 						    </tr>
 						  </thead>
 						  <tbody>
-                          
+                           
                                 
-                        
+                           
                             @foreach ($products as $item)
 						    <tr class="alert" role="alert">
 						    	<td>
@@ -41,15 +36,15 @@
 										</label>
 						    	</td>
 						    	<td>
-						    		<div class="img" ><img class="img-fluid" src="{{$item->gallery}}" alt="Alternate Text" /></div>
+						    		<div class="img" style="background-image: url(images/product-1.png);"></div>
 						    	</td>
 						      <td>
 						      	<div class="email">
-						      		<span>{{$item->description}}</span>
-						      		<span>{{$item->name}}</span>
+						      		<span>Sneakers Shoes 2020 For Men </span>
+						      		<span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
 						      	</div>
 						      </td>
-						      <td>{{$item->price}}</td>
+						      <td>$44.99</td>
 						      <td class="quantity">
 					        	<div class="input-group">
 				             	<input type="text" name="quantity" class="quantity form-control input-number" value="2" min="1" max="100">
@@ -57,20 +52,13 @@
 				          </td>
 				          <td>$89.98</td>
 						      <td>
-                      <a href="/remove_cart/{{$item->cart_id}}">
+						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-                      </a>
-				          
-				        	</td>
-                  <td>
-                      <a href="/buy_now">
-				            	<span aria-hidden="true"> <i class="fa-solid fa-bag-shopping"></i></span>
-                     
-                    </a>
+				          	</button>
 				        	</td>
 						    </tr>
-
                             @endforeach
+						  
 						  </tbody>
 						</table>
 					</div>

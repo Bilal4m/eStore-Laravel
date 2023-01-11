@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
@@ -54,17 +56,71 @@ class ProductController extends Controller
     }
 
     function cartList(){
+
+        if (session()->has('user')){
         $userId = session()->get('user')['id'];
         $products = DB::table('cart')
-        ->select('products.*')
         ->join('products','cart.product_id', '=', 'products.id')
         ->where('cart.user_id',$userId)
+        ->select('products.*','cart.id as cart_id')
         ->get();
-      
-        
-        
-        
         return view('cart_list',['products'=>$products]);
     }
- 
+  else{
+    alert()->warning('Alert','Please login first');
+            return redirect('/login');
 }
+    }
+
+    function cartFull(){
+        $products = Cart::get('id');
+        $userId = DB::table('users')
+         ->join('products','users.id', '=', 'products.id')
+        ->where('products.id',$products)
+        ->select('users.user_name')
+        ->get();
+         return view('full_cart',['products'=>$userId]);
+ 
+    }
+
+    function removeCart($id){
+       $cart = Cart::find($id);
+       $cart->delete();
+       alert()->warning('ALERT','Item removed from cart');
+       return redirect('/cart_list');
+    }
+
+    //
+    function buyNow(){
+           
+      
+         $userId = session()->get('user')['id'];
+           $total = DB::table('cart')
+                  ->join('products','cart.product_id','products.id')
+                  ->where('cart.user_id', $userId)
+                  ->sum('products.price');
+
+          
+        return view('buy_now',['total'=>$total]);
+}
+
+function orderPlace(Request $request){
+    $userId = session()->get('user')['id'];
+    $allCart = Cart::where('user_id',$userId)->get();
+    foreach ($allCart as $cart)
+    {
+        $order = new Order;
+        $order->product_id = $cart['product_id'];
+        $order->user_id = $cart['user_id'];
+        $order->address = $request->address;
+        $order->status = "pending";
+        $order->payment_method = $request->payment;
+        $order->payment_status = "pending";
+        $order->save();
+    }
+    Cart::where('user_id',$userId)->delete();
+    return redirect('/');
+   
+}
+
+    }

@@ -54,6 +54,10 @@ Route::get("detail/{id}", [ProductController::class , 'detail']);
 Route::get("/search", [ProductController::class , 'search']);
 Route::post("add_to_cart", [ProductController::class , 'addToCart']);
 Route::get("cart_list", [ProductController::class , 'cartList']);
+Route::get("full_cart", [ProductController::class , 'cartFull']);
+Route::get("remove_cart/{id}", [ProductController::class , 'removeCart']);
+Route::get("buy_now", [ProductController::class , 'buyNow']);
+Route::post("orderplace", [ProductController::class , 'orderPlace']);
 
 
 // admin section
