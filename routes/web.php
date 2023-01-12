@@ -67,7 +67,7 @@ Route::get("myorders", [ProductController::class , 'myOrders']);
 Route::view('/admin_login', 'admin_login');
 Route::post("admin_login" , [AdminController::class, 'adminLogin']);
 Route::view("add_products" , 'add_products');
-Route::post("add_products", [AdminController::class , 'add_products']);
+// Route::post("add_products", [AdminController::class , 'add_products']);
 Route::get("admin_login", [AdminController::class , 'adminLogin']);
 Route::view("admin/admin" , 'admin/admin');
 Route::get('/admin/admin_logout' , [AdminController::class, 'adminLogout']);
@@ -75,6 +75,15 @@ Route::get('/admin_login', [AdminController::class , 'ifAdminLogin']);
 
 Route::get('/admin/admin_profile', [AdminController::class , 'adminProfile']);
 Route::get('/admin/admin_settings', [AdminController::class , 'adminSettings']);
+
+// product crud ny admin
+Route::get('/admin/products_list', [AdminController::class , 'productsList']);
+Route::view("/admin/products_add" , '/admin/products_add');
+Route::post('/admin/products_add', [AdminController::class , 'productsAdd']);
+Route::get('admin/product_delete/{id}', [AdminController::class , 'deleteProduct']);
+Route::get("admin/product_update/{id}", [AdminController::class , 'fecthProductForUpdate']);
+Route::post("admin/product_update", [AdminController::class , 'productDataUpdate']);
+
 
 Route::view('/admin/check','/admin/check');
 

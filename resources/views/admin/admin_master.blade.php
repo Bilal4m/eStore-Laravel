@@ -94,12 +94,28 @@
 
                           <div class="nav__dropdown-collapse">
                               <div class="nav__dropdown-content">
-                                  <a href="/admin/users_list"" class="nav__dropdown-item">List</a>
+                                  <a href="/admin/users_list" class="nav__dropdown-item">List</a>
                                   <a href="#" class="nav__dropdown-item">Add New </a>
                                   <a href="/admin/users_manage" class="nav__dropdown-item">Manage </a>
                               </div>
                           </div>
                       </div>
+
+                      <div class="nav__dropdown">
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-user nav__icon' ></i>
+                            <span class="nav__name">Products</span>
+                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                        </a>
+
+                        <div class="nav__dropdown-collapse">
+                            <div class="nav__dropdown-content">
+                                <a href="/admin/products_list" class="nav__dropdown-item">List Products</a>
+                                <a href="/admin/products_add" class="nav__dropdown-item">Add New </a>
+                                <a href="/admin/users_manage" class="nav__dropdown-item">Manage </a>
+                            </div>
+                        </div>
+                    </div>
 
                         <a href="#" class="nav__link">
                             <i class='bx bx-message-rounded nav__icon' ></i>

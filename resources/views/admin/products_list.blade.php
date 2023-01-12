@@ -1,55 +1,14 @@
-@extends('master')
-@section('content')
-
-{{-- <h4> Hello, {{Session::get('user')}}</h4> --}}
-{{-- <h4> {{session('user')}}</h4> --}}
+@include('admin.admin_master')
 
 
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-       @foreach ($products as $item)
-           
-      
-      <div class="carousel-item {{$item['id']==2?'active':''}}">
-        <a href="detail/{{$item['id']}}" target="_blank">
-            <img class="d-block w-100 slider-img" src="{{$item['gallery']}}" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-            <h5>{{$item['name']}}</h5>
-            <p>{{$item['description']}}</p>
-          </div> 
-        </a>
-      </div>
-      
-      
-      @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  
-  
-  <div class="container">
-  
-        
+<div class="container">
     <br>
     
-    <h4>  &nbsp;&nbsp; More to love &nbsp;&nbsp;   </h4>
-   
-	<br>
+    <h4>  &nbsp;&nbsp; Products List &nbsp;&nbsp;   </h4>
  
-	<div class="row" id="ads">
+    <br>
+ 
+    <div class="row" id="ads">
     <!-- Category Card -->
    
     @foreach ($products as $item)
@@ -70,23 +29,20 @@
             </div>
             <div class="card-body text-center">
                 <div class="ad-title m-auto">
-                    <h5>{{$item['name']}}</h5>
+                    <h5>{{$item->name}}</h5>
                 </div>
-                <a class="ad-btn" href="detail/{{$item['id']}}">More Details</a>
+                <a class="ad-btn" href={{"product_update/".$item['id']}}>Edit Item</a>
+                <a class="ad-btn" href={{"product_delete/".$item['id']}}>Remove Item</a>
             </div> 
+            
         </a>
-        </div>  
-       
+        </div>  <br><br>
     </div> 
-    
     @endforeach 
-    
   
 </div>
-
 </div>
  
-
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -96,11 +52,7 @@
     
     }
     .img-fluid{
-        height: 150px;
-    }
- 
-    .w-5{
-        display: none;
+        height: 250px;
     }
     img.slider-img{
         height: 800px !important;
@@ -210,6 +162,3 @@
                 margin: auto;
             }
     </style>
-       
-  
-@endsection

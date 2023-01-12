@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\facades\Hash;
 use App\Models\Admin;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -25,19 +26,7 @@ class AdminController extends Controller
         }
     }
 
-    // add products by admin
-    function add_products(Request $request)
-    {
-        $product = new Product;
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->category = $request->category;
-        $product->gallery = $request->gallery;
-        $product->description = $request->description;
-        $product->save();
-        return redirect("add_products");
-
-    }
+   
 
     // function adminPanel(){
     //     return "admin panel";
@@ -81,5 +70,54 @@ class AdminController extends Controller
         $admin = Admin::get();
         return view('admin/admin_settings',['adminprofile'=> $admin]);
     }
-  
+
+
+    // products list by admin
+    function productsList(){
+        $data = Product::all();
+         return view('admin/products_list', ['products'=>$data]);
+    }
+   // add products by admin
+   function productsAdd(Request $request)
+   {
+       $product = new Product;
+       $product->name = $request->name;
+       $product->price = $request->price;
+       $product->category = $request->category;
+       $product->gallery = $request->gallery;
+       $product->description = $request->description;
+       $product->save();
+       alert()->success('success','New product added successfully');
+       return redirect("admin/admin");
+
+   }
+
+    // delete product by admin
+    function deleteProduct($id)
+    {
+     $product = Product::find($id);
+     $product->delete();
+     alert()->warning('Deleted','Product deleted');
+     return redirect ('admin/admin');
+    }
+    // fetch product data
+    function fecthProductForUpdate($id){
+        $product = Product::find($id);
+           return view('admin/product_update',['products'=>$product]);
+    }
+
+    // update the product
+    function productDataUpdate(Request $req){
+        $product = Product::find($req->id);
+        $product->name = $req->name;
+        $product->price = $req->price;
+        $product->category = $req->category;
+        $product->gallery = $req->gallery;
+        $product->description = $req->description;
+        $product->save();
+        alert()->success('Success', 'Product updated successfully');
+        return redirect('admin/admin');
+     
+       }
+ 
 }
