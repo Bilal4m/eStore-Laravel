@@ -29,24 +29,40 @@
           <li class="nav-item">
             <a class="nav-link mx-1 text-uppercase" href="/">Home</a>
           </li>
+          @if ($total > 0)
           <li class="nav-item">
             <a class="nav-link mx-1 text-uppercase" href="/cart_list"><i class="fa-solid fa-cart-shopping me-1"></i>Cart({{$total}})</a>
           </li>
+          @else
           <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="admin_login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> Admin</a>
+            <a class="nav-link mx-1 text-uppercase" href="/emptycart"><i class="fa-solid fa-cart-shopping me-1"></i>Cart</a>
           </li>
+          @endif
+         
         
           @if (Session::has('user'))
           <li class="nav-item dropdown">
             <a class="nav-link mx-1 text-uppercase dropdown-toggle" data-toggle="dropdown" href="#"> {{session('user')['user_name']}}        
                <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/logout">Logout</a></li>
-              
+              <li><a href="/logout">Logout</a></li> 
+              @if ($total > 0)
+              <li><a href="/myorders">My Orders</a></li> 
+              @else
+              <li><a href="/noorder">My Orders</a></li> 
+              @endif
             </ul>
+            
           </li>
-          @else <li class="nav-item">
+          {{-- <li class="nav-item">
+            <a class="nav-link mx-1 text-uppercase" href="admin_login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> My Orders</a>
+          </li> --}}
+          @else 
+          <li class="nav-item">
             <a class="nav-link mx-1 text-uppercase" href="/login"> <i class="fa-solid fa-circle-user me-1"></i>Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-1 text-uppercase" href="admin_login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> Admin</a>
           </li>
           @endif
           {{-- <li class="dropdown">

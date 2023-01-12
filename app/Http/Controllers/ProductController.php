@@ -56,7 +56,7 @@ class ProductController extends Controller
     }
 
     function cartList(){
-
+       
         if (session()->has('user')){
         $userId = session()->get('user')['id'];
         $products = DB::table('cart')
@@ -82,6 +82,14 @@ class ProductController extends Controller
          return view('full_cart',['products'=>$userId]);
  
     }
+    function emptyCart(){
+        alert()->warning('ALERT','Cart is empty please order some products');
+        return redirect('/');
+    }
+    function noOrder(){
+        alert()->warning('ALERT','You have no orders');
+        return redirect('/');
+    }
 
     function removeCart($id){
        $cart = Cart::find($id);
@@ -100,7 +108,7 @@ class ProductController extends Controller
                   ->where('cart.user_id', $userId)
                   ->sum('products.price');
 
-          
+                
         return view('buy_now',['total'=>$total]);
 }
 
@@ -117,10 +125,21 @@ function orderPlace(Request $request){
         $order->payment_method = $request->payment;
         $order->payment_status = "pending";
         $order->save();
+        alert()->success('Success','Order placed successfully'); 
+        
     }
     Cart::where('user_id',$userId)->delete();
     return redirect('/');
    
+}
+function myOrders(){
+    $userId = session()->get('user')['id'];
+    $orders = DB::table('orders')
+           ->join('products','orders.product_id','products.id')
+           ->where('orders.user_id', $userId)
+           ->get();
+
+ return view('myorders',['orders'=>$orders]);
 }
 
     }
