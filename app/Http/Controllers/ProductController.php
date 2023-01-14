@@ -14,7 +14,7 @@ class ProductController extends Controller
      // product 
      public function index()
      {
-         $data = Product::all();
+         $data = Product::paginate(6);
          return view('/product', ['products'=>$data]);
      }
  
@@ -39,6 +39,7 @@ class ProductController extends Controller
             $cart = new Cart;
             $cart->user_id = $request->session()->get('user')['id'];
             $cart->product_id = $request->product_id;
+         
             $cart->save();
             alert()->success('Success','Item added to cart');
             return redirect('/');
@@ -57,9 +58,10 @@ class ProductController extends Controller
 
     function cartList(){
        
-        if (session()->has('user')){
+        if (session()->has('user'))
+        {
         $userId = session()->get('user')['id'];
-        $products = DB::table('cart')
+       $products = DB::table('cart')
         ->join('products','cart.product_id', '=', 'products.id')
         ->where('cart.user_id',$userId)
         ->select('products.*','cart.id as cart_id')
@@ -73,13 +75,14 @@ class ProductController extends Controller
     }
 
     function cartFull(){
-        $products = Cart::get('id');
-        $userId = DB::table('users')
-         ->join('products','users.id', '=', 'products.id')
-        ->where('products.id',$products)
-        ->select('users.user_name')
-        ->get();
-         return view('full_cart',['products'=>$userId]);
+        // $products = Cart::get('id');
+        // $userId = DB::table('users')
+        //  ->join('products','users.id', '=', 'products.id')
+        // ->where('products.id',$products)
+        // ->select('users.user_name')
+        // ->get();
+        //  return view('full_cart',['products'=>$userId]);
+         return view('full_cart');
  
     }
     function emptyCart(){
@@ -103,7 +106,7 @@ class ProductController extends Controller
            
       
          $userId = session()->get('user')['id'];
-           $total = DB::table('cart')
+          $total = DB::table('cart')
                   ->join('products','cart.product_id','products.id')
                   ->where('cart.user_id', $userId)
                   ->sum('products.price');
@@ -118,12 +121,17 @@ function orderPlace(Request $request){
     foreach ($allCart as $cart)
     {
         $order = new Order;
+
+        $order->tracking_id = rand(0,100000);
+       
+
         $order->product_id = $cart['product_id'];
         $order->user_id = $cart['user_id'];
         $order->address = $request->address;
         $order->status = "pending";
         $order->payment_method = $request->payment;
         $order->payment_status = "pending";
+        $order->sub_total = $request->sub_total;
         $order->save();
         alert()->success('Success','Order placed successfully'); 
         
@@ -134,12 +142,14 @@ function orderPlace(Request $request){
 }
 function myOrders(){
     $userId = session()->get('user')['id'];
-    $orders = DB::table('orders')
+     $orders = DB::table('orders')
            ->join('products','orders.product_id','products.id')
            ->where('orders.user_id', $userId)
            ->get();
 
  return view('myorders',['orders'=>$orders]);
 }
+
+
 
     }

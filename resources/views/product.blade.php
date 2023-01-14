@@ -74,18 +74,21 @@
                 </div>
                 <a class="ad-btn" href="detail/{{$item['id']}}">More Details</a>
             </div> 
+            
         </a>
         </div>  
        
     </div> 
-    
+     
     @endforeach 
-    
+   
   
 </div>
-
+<div>
+    {{$products->links()}}
+</div> <br><br>
 </div>
- 
+
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');

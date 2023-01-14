@@ -12,7 +12,7 @@
     <!-- Category Card -->
    
     @foreach ($products as $item)
-
+    
     <div class="col-md-4">
         <div class="card rounded">
             <div class="card-image">
@@ -35,14 +35,18 @@
                 <a class="ad-btn" href={{"product_delete/".$item['id']}}>Remove Item</a>
             </div> 
             
-        </a>
+      
         </div>  <br><br>
     </div> 
+   
     @endforeach 
-  
+    <div>
+        {{$products->links()}}
+    </div> 
 </div>
+
 </div>
- 
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -50,6 +54,9 @@
     body {
         font-family: 'Montserrat', sans-serif;
     
+    }
+    .w-5{
+        display: none;
     }
     .img-fluid{
         height: 250px;

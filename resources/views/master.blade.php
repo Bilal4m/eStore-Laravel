@@ -28,6 +28,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
+   
 </head>
 <body>
     @include('sweetalert::alert')

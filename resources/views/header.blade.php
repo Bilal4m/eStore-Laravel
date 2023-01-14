@@ -46,11 +46,7 @@
                <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/logout">Logout</a></li> 
-              @if ($total > 0)
               <li><a href="/myorders">My Orders</a></li> 
-              @else
-              <li><a href="/noorder">My Orders</a></li> 
-              @endif
             </ul>
             
           </li>

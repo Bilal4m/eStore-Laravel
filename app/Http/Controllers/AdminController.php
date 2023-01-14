@@ -74,7 +74,7 @@ class AdminController extends Controller
 
     // products list by admin
     function productsList(){
-        $data = Product::all();
+        $data = Product::paginate(6);
          return view('admin/products_list', ['products'=>$data]);
     }
    // add products by admin

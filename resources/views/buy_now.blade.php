@@ -42,9 +42,12 @@
                             <tr>
 
                                 <th>Net Amount </th>
-                                <th>{{$total + 100 + 200}}</th>
+                                <th>{{$total + 100 + 200 }}</th>
 
                             </tr>
+
+                          
+                            
                             {{--                      
                         <tr>
 @foreach($cart as $item)
@@ -61,7 +64,7 @@
                             </tr>
                             @endforeach--}}
 
-
+                  
 
 
                         </tbody>
@@ -70,6 +73,9 @@
                         Delivery Details</h4>
                         <form action="orderplace" method="POST">
                             @csrf
+                            <div class="form-group">
+                                <input type="" name="sub_total" value="{{$total}}" readonly> <span>Sub Total</span>
+                            </div>
                             <div class="form-group">
                               <textarea placeholder="enter address" name="address" cols="25" rows="5"> enter address </textarea> 
                             </div>
