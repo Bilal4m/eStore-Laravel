@@ -1,304 +1,197 @@
-<head>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js	"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css	"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js	"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+@extends('master')
+@section('content')
 
-    @include('header')
-   
-</head>
 
- 
- 
-<div class="d-flex flex-column justify-content-center align-items-center" id="order-heading">
-    <div class="text-uppercase">
-        <p>Order detail</p>
-    </div>
-        
- 
-    <div class="h4">Tuesday, December 08, 2020</div>
-    <div class="pt-1">
-        @foreach ($orders as $item)
-           @if ($loop->first)
-        <p>Order #{{$item->tracking_id}} 
-           @endif
-        @endforeach is currently<b class="text-dark"> processing</b></p>
-    </div>
+
+<div class="container-fluid">
+
+    <div class="container">
+      <!-- Title -->
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <h2 class="h5 mb-0">
+          <a href="#" class="text-muted"></a> 
+          @foreach ($orders as $item)
+          @if ($loop->first)
+       Order #{{$item->tracking_id}} 
+          @endif
+       @endforeach
+        </h2>
+      </div>
     
-    <div class="btn close text-white"> &times; </div>
-</div>
-<div class="wrapper bg-white">
-    <div class="table-responsive">
-        <table class="table table-borderless">
-            <thead>
-                <tr class="text-uppercase text-muted">
-                    <th scope="col"></th>
-                    <th scope="col" class="text-right"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"> </th>
-                    <td class="text-right"><b>
-                        {{-- @foreach ($orders as $item)
-                        @if ($loop->first)
-                        {{$item->sub_total}}
-                        @endif --}}
-                    {{-- @endforeach --}}
-                </b></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="d-flex justify-content-start align-items-center list py-1">
-        <div><b>Products</b></div>
-        @foreach ($orders as $item)
-    
+      <!-- Main content -->
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Details -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="mb-3 d-flex justify-content-between">
+                <div>
+                  <span class="me-3"> 
+                    @foreach ($orders as $item)
+                    @if ($loop->first)
+                 {{$item->created_at}} 
+                    @endif
+                 @endforeach 
+                </span>
+                  <span class="me-3"> @foreach ($orders as $item)
+                    @if ($loop->first)
+                 #{{$item->tracking_id}} 
+                    @endif
+                 @endforeach </span>
+                  <span class="me-3">Visa -1234</span>
+                  <span class="badge rounded-pill bg-info">SHIPPING</span>
+                </div>
+                <div class="d-flex">
+                  <button class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">Invoice</span></button>
+                  <div class="dropdown">
+                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Edit</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> Print</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-borderless">
+                <tbody>
+                  @foreach ($orders as $item)
+                  <tr>
+                    <td>
+                     
+                      <div class="d-flex mb-2">
+                        <div class="flex-shrink-0">
+                          <img src=" {{$item->gallery}} " alt="" width="35" class="img-fluid">
+                        </div>
+                        <div class="flex-lg-grow-1 ms-3">
+                          <h6 class="small mb-0"><a href="#" class="text-reset"> {{$item->name}} </a></h6>
+                          <span class="small">Description:  {{$item->description}} </span>
+                        </div>
+                      </div>
+                      
+                    </td>
+                    
+                    <td>{{$item->total_qty_product}}</td>
+                    <td class="text-end">{{$item->price}}</td>
+                  </tr>
+                  @endforeach
+                  <tr>
+                    {{-- <td>
+                      <div class="d-flex mb-2">
+                        <div class="flex-shrink-0">
+                          <img src="https://www.bootdey.com/image/280x280/FF69B4/000000" alt="" width="35" class="img-fluid">
+                        </div>
+                        <div class="flex-lg-grow-1 ms-3">
+                          <h6 class="small mb-0"><a href="#" class="text-reset">Smartwatch IP68 Waterproof GPS and Bluetooth Support</a></h6>
+                          <span class="small">Color: White</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>1</td>
+                    <td class="text-end">$79.99</td> --}}
+                  </tr>
+                </tbody>
+                <tfoot>
+                  {{-- <tr>
+                    <td colspan="2">Subtotal</td>
+                    <td class="text-end">$159,98</td>
+                  </tr> --}}
+                  <tr>
+                    <td colspan="2">Shipping</td>
+                    <td class="text-end">200</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Discount </td>
+                    <td class="text-danger text-end">-0.00</td>
+                  </tr>
+                  <tr class="fw-bold">
+                    <td colspan="2">TOTAL</td>
+                    <td class="text-end">PKR {{$item->sub_total +200}}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <!-- Payment -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <h3 class="h6">Payment Method</h3>
+                  <p>{{$item->payment_method}} <br>
+                  Total: PKR {{$item->sub_total}} <span class="badge bg-success rounded-pill">PAID</span></p>
+                </div>
+                <div class="col-lg-6">
+                  <h3 class="h6">Billing address</h3>
+                  <address>
+                    <strong>{{session('user')['user_name']}}</strong><br>
+                    @foreach ($orders as $item)
+                    @if ($loop->first)
+                 {{$item->address}} 
+                    @endif
+                 @endforeach <br>
+                    San Francisco, CA 94103<br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
         
-        <div class="mx-3">  <img src="{{$item->gallery}}  "  alt="apple" class="rounded-circle" width="30" height="30"> </div>
-        <div class="order-item">{{$item->name}} </div> <br>
-        {{-- <sub>({{$item->price}}-PKR)</sub> --}}
-        @endforeach
-    </div>
-    {{-- <div class="d-flex justify-content-start align-items-center list my-2 py-1">
-        <div><b>4px</b></div>
-        <div class="mx-3"> <img src="https://images.unsplash.com/photo-1602081593819-65e7a8cee0dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="apple" class="rounded-circle" width="30" height="30"> </div>
-        <div class="order-item">Mango</div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center list my-2 py-1">
-        <div><b>2px</b></div>
-        <div class="mx-3"> <img src="https://images.unsplash.com/photo-1584183187885-071d53d42531?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="apple" class="rounded-circle" width="30" height="30"> </div>
-        <div class="order-item">Carrot Apple Ginger</div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center list my-2 py-1">
-        <div><b>3px</b></div>
-        <div class="mx-3"> <img src="https://images.unsplash.com/photo-1602096934878-5028bf10ca50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="apple" class="rounded-circle" width="30" height="30"> </div>
-        <div class="order-item">Pear</div>
-    </div> --}}
-    <div class="pt-2 border-bottom mb-3"></div>
-    <div class="d-flex justify-content-start align-items-center pl-3">
-        <div class="text-muted">Payment Method</div>
-        <div class="ml-auto"> 
-            {{-- <img src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt="" width="30" height="30"> 
-            <label>Mastercard ******5342</label>  --}}
-            <label>{{$item->payment_method}}</label> 
-        </div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
-        <div class="text-muted">Shipping</div>
-        <div class="ml-auto"> <label>200</label> </div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
-        <div class="text-muted">Tax</div>
-        <div class="ml-auto"> <label>100</label> </div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center pb-4 pl-3 border-bottom">
-        <div class="text-muted"> <button class="text-white btn">0% Discount</button> </div>
-        <div class="ml-auto price"> 0 </div>
-    </div>
-    <div class="d-flex justify-content-start align-items-center pl-3 py-3 mb-4 border-bottom">
-        <div class="text-muted"> Today's Total </div>
-        <div class="ml-auto h5"> {{$item->sub_total}} </div>
-    </div>
-    <div class="row border rounded p-1 my-3">
-        <div class="col-md-6 py-3">
-            <div class="d-flex flex-column align-items start"> <b>Billing Address</b>
+         
+          <div class="card mb-4">
+            <!-- Shipping information -->
+            <div class="card-body">
+              <h3 class="h6">Shipping Information</h3>
+              <strong>Leopard</strong>
+              <span><a href="#" class="text-decoration-underline" target="_blank">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
+              <hr>
+              <h3 class="h6">Address</h3>
+              <address>
+                <strong>{{session('user')['user_name']}}</strong><br>
                 @foreach ($orders as $item)
-                <p class="text-justify pt-2"> 
-                    @if ($loop->first)
-                      {{$item->address}}
-                    @endif </p>
-                {{-- <p class="text-justify">New York</p> --}}
-                @endforeach
+                @if ($loop->first)
+             {{$item->address}} 
+                @endif
+             @endforeach <br>
+                San Francisco, CA 94103<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+              </address>
             </div>
+          </div>
         </div>
-        <div class="col-md-6 py-3">
-            <div class="d-flex flex-column align-items start"> <b>Shipping Address</b>
-                @foreach ($orders as $item)
-                <p class="text-justify pt-2"> 
-                    @if ($loop->first)
-                      {{$item->address}}
-                    @endif 
-                </p>
-                {{-- <p class="text-justify">New York</p> --}}
-                @endforeach                {{-- <p class="text-justify">New York</p> --}}
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="pl-3 font-weight-bold">Related Subsriptions</div>
-    <div class="d-sm-flex justify-content-between rounded my-3 subscriptions">
-        <div> 
-            @foreach ($orders as $item)
-            @if ($loop->first)
-            <b>#{{$item->tracking_id}}</b>
-            @endif 
-            @endforeach 
-         </div>
-        <div>December 08, 2020</div>
-        <div>
-            @foreach ($orders as $item)
-            @if ($loop->first)
-            Status: {{$item->payment_status}}
-            @endif 
-            @endforeach 
-        </div>
-        <div> Total: <b> 
-            @foreach ($orders as $item)
-            @if ($loop->first)
-           {{$item->sub_total}}
-            @endif 
-            @endforeach 
-        </b> </div>
-    </div>
-</div>
-
+      </div>
 <style>
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif
+    body{
+    background:#eee;
 }
-
-body {
-    background-color: #7C4135
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
 }
-
-#order-heading {
-    background-color: #edf4f7;
+.card {
     position: relative;
-    border-top-left-radius: 25px;
-    max-width: 800px;
-    padding-top: 20px;
-    margin: 30px auto 0px
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 1rem;
 }
-
-#order-heading .text-uppercase {
-    font-size: 0.9rem;
-    color: #777;
-    font-weight: 600
+.text-reset {
+    --bs-text-opacity: 1;
+    color: inherit!important;
 }
-
-#order-heading .h4 {
-    font-weight: 600
-}
-
-#order-heading .h4+div p {
-    font-size: 0.8rem;
-    color: #777
-}
-
-.close {
-    padding: 10px 15px;
-    background-color: #777;
-    border-radius: 50%;
-    position: absolute;
-    right: -15px;
-    top: -20px
-}
-
-.wrapper {
-    padding: 0px 50px 50px;
-    max-width: 800px;
-    margin: 0px auto 40px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px
-}
-
-.table th {
-    border-top: none
-}
-
-.table thead tr.text-uppercase th {
-    font-size: 0.8rem;
-    padding-left: 0px;
-    padding-right: 0px
-}
-
-.table tbody tr th,
-.table tbody tr td {
-    font-size: 0.9rem;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 5px
-}
-
-.table-responsive {
-    height: 100px
-}
-
-.list div b {
-    font-size: 0.8rem
-}
-
-.list .order-item {
-    font-weight: 600;
-    color: #6db3ec
-}
-
-.list:hover {
-    background-color: #f4f4f4;
-    cursor: pointer;
-    border-radius: 5px
-}
-
-label {
-    margin-bottom: 0;
-    padding: 0;
-    font-weight: 900
-}
-
-button.btn {
-    font-size: 0.9rem;
-    background-color: #66cdaa
-}
-
-button.btn:hover {
-    background-color: #5cb99a
-}
-
-.price {
-    color: #5cb99a;
-    font-weight: 700
-}
-
-p.text-justify {
-    font-size: 0.9rem;
-    margin: 0
-}
-
-.row {
-    margin: 0px
-}
-
-.subscriptions {
-    border: 1px solid #ddd;
-    border-left: 5px solid #ffa500;
-    padding: 10px
-}
-
-.subscriptions div {
-    font-size: 0.9rem
-}
-
-@media(max-width: 425px) {
-    .wrapper {
-        padding: 20px
-    }
-
-    body {
-        font-size: 0.85rem
-    }
-
-    .subscriptions div {
-        padding-left: 5px
-    }
-
-    img+label {
-        font-size: 0.75rem
-    }
+a {
+    color: #5465ff;
+    text-decoration: none;
 }
 </style>
+
+      @endsection

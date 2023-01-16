@@ -21,14 +21,25 @@
                       </div>
                   </div>
               </div>
-              <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                  <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
+              <div class="d-flex flex-row align-items-center qty">
+                {{-- <i class="fa fa-minus text-danger"></i>
+                  <h5 class="text-grey mt-1 mr-1 ml-1">{{$item->product_qty}}</h5>
+                  <i class="fa fa-plus text-success"></i> --}}
+                  <div class="input-group w-auto justify-content-end align-items-center">
+                    {{-- <input type="button" onclick="decreaseQuantity({{$item->product_id}})" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
+                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25">
+                    <input type="button"onclick="decreaseQuantity({{$item->product_id}})" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"> --}}
+                 </div>
+                </div>
               <div>
-                  <h5 class="text-grey">PKR:{{$item->price}}</h5>
+                
+                  <h5 class="text-grey">{{$item->price * $item->product_qty}}</h5>
+                
               </div>
               <div class="d-flex align-items-center">
                <a href="/remove_cart/{{$item->cart_id}}"> <i class="fa fa-trash mb-1 text-danger"></i> </a>
               </div>
+              
           </div>
           @endforeach
          
@@ -37,6 +48,9 @@
             
             <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button"><a href="/buy_now">Proceed to Pay</a></button>
           
+          </div>
+          <div class="card-footer">
+            <h5>Total Price:{{$item->price * $item->product_qty }}</h5>
           </div>
       </div>
   </div>
@@ -92,6 +106,55 @@ a  {
   color: #FFFFFF;
   
 }
+icon-shape {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icon-sm {
+    width: 2rem;
+    height: 2rem;
+    
+}
 </style>
+
+<script>
+  function incrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data('field');
+        var parent = $(e.target).closest('div');
+        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+        if (!isNaN(currentVal)) {
+            parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+        } else {
+            parent.find('input[name=' + fieldName + ']').val(0);
+        }
+    }
+
+    function decrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data('field');
+        var parent = $(e.target).closest('div');
+        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+        if (!isNaN(currentVal) && currentVal > 0) {
+            parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+        } else {
+            parent.find('input[name=' + fieldName + ']').val(0);
+        }
+    }
+
+    $('.input-group').on('click', '.button-plus', function(e) {
+        incrementValue(e);
+    });
+
+    $('.input-group').on('click', '.button-minus', function(e) {
+        decrementValue(e);
+    });
+</script>
 
 @endsection

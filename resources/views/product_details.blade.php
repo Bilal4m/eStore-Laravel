@@ -51,11 +51,24 @@
                         <span class="color green"></span>
                         <span class="color blue"></span>
                     </h5>
+                    <form action="/add_to_cart" method="POST">
+                        @csrf
+                        <div class="input-group w-auto justify-content-end align-items-center">
+                            <h5 class="colors">Qty:
+                            {{-- <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 ">
+                            <input type="number" step="1" max="10" value="1" name="product_qty" class="quantity-field border-0 text-center w-25">
+                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm "> --}}
+                            <input type="button"  value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
+                            <input type="number" step="1" max="10" value="1" name="product_qty" class="quantity-field border-0 text-center w-25">
+                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity">
+                         </div>
+                        </h5>
                     <div class="action">
-                        <form action="/add_to_cart" method="POST">
-                            @csrf
+                        
                             <input type="hidden" name="product_id" value={{$product['id']}}>
-                            <input type="hidden" name="quantity" value={{$product['quantity']}}>
+                            <input type="hidden" name="product_total" value={{$product['price']}}>
+
+                            {{-- <input type="hidden" name="product_qty" value={{$product['qty']}}> --}}
                             <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>
 
                        
@@ -78,8 +91,55 @@
             text-decoration: none;
             color: white;
         }
-        
+        .icon-shape {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.icon-sm {
+    width: 2rem;
+    height: 2rem;
+    background-color:#85AD00;
+    
+}
 </style>
-
-
+<script>
+    function incrementValue(e) {
+          e.preventDefault();
+          var fieldName = $(e.target).data('field');
+          var parent = $(e.target).closest('div');
+          var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+  
+          if (!isNaN(currentVal)) {
+              parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+          } else {
+              parent.find('input[name=' + fieldName + ']').val(0);
+          }
+      }
+  
+      function decrementValue(e) {
+          e.preventDefault();
+          var fieldName = $(e.target).data('field');
+          var parent = $(e.target).closest('div');
+          var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+  
+          if (!isNaN(currentVal) && currentVal > 0) {
+              parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+          } else {
+              parent.find('input[name=' + fieldName + ']').val(0);
+          }
+      }
+  
+      $('.input-group').on('click', '.button-plus', function(e) {
+          incrementValue(e);
+      });
+  
+      $('.input-group').on('click', '.button-minus', function(e) {
+          decrementValue(e);
+      });
+  </script>
 @endsection

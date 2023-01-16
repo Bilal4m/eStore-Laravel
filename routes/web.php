@@ -62,6 +62,8 @@ Route::get("buy_now", [ProductController::class , 'buyNow']);
 Route::post("orderplace", [ProductController::class , 'orderPlace']);
 Route::get("myorders", [ProductController::class , 'myOrders']);
 
+Route::post("update-cart", [ProductController::class , 'updateCart']);
+
 
 // admin section
 Route::view('/admin_login', 'admin_login');
