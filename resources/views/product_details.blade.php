@@ -66,7 +66,9 @@
                     <div class="action">
                         
                             <input type="hidden" name="product_id" value={{$product['id']}}>
-                            <input type="hidden" name="product_total" value={{$product['price']}}>
+                            <input type="hidden" name="product_price" value={{$product['price']}}>
+                            <input type="hidden" name="product_name" value={{$product['name']}}>
+                            <input type="hidden" name="user_name" value= {{session('user')['user_name']}}>
 
                             {{-- <input type="hidden" name="product_qty" value={{$product['qty']}}> --}}
                             <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>

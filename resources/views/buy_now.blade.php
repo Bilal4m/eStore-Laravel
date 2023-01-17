@@ -2,12 +2,24 @@
 @extends('master')
 @section('content')
 
-
-
-       
-
-
-
+<?php
+$sum =0;
+$dc=0;
+$tax=0;
+foreach ($total as $key => $item) {
+ $sum += $item->price * $item->product_qty ; 
+}
+if( $sum >=2000){
+  $dc = $sum*7/100;
+}else{
+  $dc = $sum*5/100;
+}
+if( $sum >=2000){
+  $tax = $sum*4/100;
+}else{
+  $tax = $sum*2/100;
+}
+?> 
 <body class="bg-light" cz-shortcut-listen="true">
 
   <div class="container">
@@ -18,19 +30,18 @@
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">Your cart</span>
-          <span class="badge badge-secondary badge-pill">3</span>
+          {{-- <span class="badge badge-secondary badge-pill">Cart</span> --}}
         </h4>
         <ul class="list-group mb-3">
           @foreach ($total as $item)
-
+          @if ($loop->first)
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
               <h6 class="my-0">Total Amount</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-                
-           
-            <span class="text-muted">{{$item->price * $item->product_qty}}</span>
+            <span class="text-muted">{{$sum}}</span>
+            @endif
             @endforeach
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -38,22 +49,24 @@
               <h6 class="my-0">Tax Amount</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-            <span class="text-muted">200</span>
+            <span class="text-muted">{{$tax}}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
               <h6 class="my-0">Delivery Charges</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-            <span class="text-muted">200</span>
+            <span class="text-muted">{{$dc}}</span>
           </li>
        
-             
+        
          
           <li class="list-group-item d-flex justify-content-between">
-            <span>Total (PKR)</span>
+            <span>Sub Total (PKR)</span>
             @foreach ($total as $item)
-            <strong>{{$item->price * $item->product_qty + 200 + 200}}</strong>
+            @if ($loop->first)
+            <strong>{{$sum + $dc + $tax}}</strong>
+            @endif
             @endforeach
           </li>
         </ul>
@@ -75,14 +88,14 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+              <input type="text" class="form-control" id="firstName" placeholder="" name="first_name" required="">
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+              <input type="text" class="form-control" id="lastName" placeholder="" name="last_name" required="">
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -122,13 +135,13 @@
             <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
             <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
           </div>
-{{-- 
+
           <div class="row">
             <div class="col-md-5 mb-3">
               <label for="country">Country</label>
-              <select class="custom-select d-block w-100" id="country" required="">
+              <select class="custom-select d-block w-100" name="country" id="country" required="">
                 <option value="">Choose...</option>
-                <option>United States</option>
+                <option>Pakistan</option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid country.
@@ -136,22 +149,27 @@
             </div>
             <div class="col-md-4 mb-3">
               <label for="state">State</label>
-              <select class="custom-select d-block w-100" id="state" required="">
+              <select class="custom-select d-block w-100" id="state" required="" name="state">
                 <option value="">Choose...</option>
-                <option>California</option>
+                <option>Punjab</option>
+                <option>Sindh</option>
+                <option>KPK</option>
+                <option>Balochistan</option>
               </select>
               <div class="invalid-feedback">
                 Please provide a valid state.
               </div>
             </div>
             <div class="col-md-3 mb-3">
-              <label for="zip">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required="">
+              <label for="zip">Phone</label>
+              <input type="text" class="form-control" id="zip" placeholder="" required="" name="phone">
               <div class="invalid-feedback">
-                Zip code required.
+                Phone Number required.
               </div>
             </div>
-          </div> --}}
+          </div>
+
+
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="same-address">
@@ -167,8 +185,13 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               {{-- <label for="cc-number">Sub Total</label> --}}
-              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$item->price * $item->product_qty}}" readonly>
-              <input type="hidden" class="form-control" name="total_qty_product" id="cc-number" value="{{$item->product_qty}}" readonly>
+              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$sum + $dc + $tax}}" readonly>
+              <input type="hidden" class="form-control" name="d_charges" id="cc-number" value="{{ $dc}}" readonly>
+              <input type="hidden" class="form-control" name="tax_amt" id="cc-number" value="{{ $tax}}" readonly>
+              @foreach ($total as $item)
+              <input type="hidden" class="form-control" name="product_name" id="cc-number" value="{{$item->name}}" readonly>
+              @endforeach
+              {{-- <input type="hidden" class="form-control" name="total_qty_product" id="cc-number" value="{{$item->product_qty}}" readonly> --}}
               
             </div>
           </div>

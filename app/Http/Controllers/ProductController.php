@@ -38,9 +38,11 @@ class ProductController extends Controller
         {
             $cart = new Cart;
             $cart->user_id = $request->session()->get('user')['id'];
+            $cart->user_name = $request->user_name;
             $cart->product_id = $request->product_id;
             $cart->product_qty = $request->product_qty;
-            $cart->product_total = $request->product_total;
+            $cart->product_price = $request->product_price;
+            $cart->product_name = $request->product_name;
             $cart->save();
             alert()->success('Success','Item added to cart');
             return redirect('/');
@@ -62,7 +64,7 @@ class ProductController extends Controller
         if (session()->has('user'))
         {
         $userId = session()->get('user')['id'];
-       $products = DB::table('cart')
+        $products = DB::table('cart')
         ->join('products','cart.product_id', '=', 'products.id')
         ->where('cart.user_id',$userId)
         ->select('products.*','cart.id as cart_id','cart.product_qty','cart.product_id')
@@ -83,7 +85,8 @@ class ProductController extends Controller
         // ->select('users.user_name')
         // ->get();
         //  return view('full_cart',['products'=>$userId]);
-         return view('full_cart');
+      return  $total = Cart::session('user')->getTotal();
+        //  return view('full_cart');
  
     }
     function emptyCart(){
@@ -129,12 +132,21 @@ function orderPlace(Request $request){
 
         $order->product_id = $cart['product_id'];
         $order->user_id = $cart['user_id'];
+        $order->product_qty = $cart['product_qty'];
+        $order->product_price = $cart['product_price'];
+        $order->product_name = $cart['product_name'];
         $order->address = $request->address;
         $order->status = "pending";
         $order->payment_method = $request->payment;
         $order->payment_status = "pending";
         $order->sub_total = $request->sub_total;
-        $order->total_qty_product = $request->total_qty_product;
+        $order->d_charges= $request->d_charges;
+        $order->tax_amt = $request->tax_amt;
+        $order->first_name = $request->first_name;
+        $order->last_name = $request->last_name;
+        $order->country = $request->country;
+        $order->state = $request->state;
+        $order->phone = $request->phone;
         $order->save();
         alert()->success('Success','Order placed successfully'); 
         

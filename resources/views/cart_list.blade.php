@@ -43,15 +43,35 @@
           </div>
           @endforeach
          
-          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card"><button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button></div>
+          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+            <input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card">
+            <button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button>
+          </div>
+          <?php
+           $sum =0;
+           foreach ($products as $key => $item) {
+            $sum += $item->price * $item->product_qty ; 
+           }
+          ?>
+          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+            <span class="font-weight-bold form-control border-0 gift-card">Grand Total : {{$sum }}</span>
+          </div>
           <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
             
-            <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button"><a href="/buy_now">Proceed to Pay</a></button>
+            <button class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default" type="button">
+              <a href="/buy_now">Proceed to Pay</a></button>
+            {{-- <button class="add-to-cart btn btn-default" type="button submit">add to cart</button> --}}
+
+          </div>
           
-          </div>
-          <div class="card-footer">
+
+            
+          
+          {{-- <div class="card-footer">
             <h5>Total Price:{{$item->price * $item->product_qty }}</h5>
-          </div>
+            <h5>Total Price:{{$sum }}</h5>
+            
+          </div> --}}
       </div>
   </div>
 </div>
@@ -106,55 +126,12 @@ a  {
   color: #FFFFFF;
   
 }
-icon-shape {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    vertical-align: middle;
+a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
-.icon-sm {
-    width: 2rem;
-    height: 2rem;
-    
-}
 </style>
 
-<script>
-  function incrementValue(e) {
-        e.preventDefault();
-        var fieldName = $(e.target).data('field');
-        var parent = $(e.target).closest('div');
-        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
-
-        if (!isNaN(currentVal)) {
-            parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
-        } else {
-            parent.find('input[name=' + fieldName + ']').val(0);
-        }
-    }
-
-    function decrementValue(e) {
-        e.preventDefault();
-        var fieldName = $(e.target).data('field');
-        var parent = $(e.target).closest('div');
-        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
-
-        if (!isNaN(currentVal) && currentVal > 0) {
-            parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
-        } else {
-            parent.find('input[name=' + fieldName + ']').val(0);
-        }
-    }
-
-    $('.input-group').on('click', '.button-plus', function(e) {
-        incrementValue(e);
-    });
-
-    $('.input-group').on('click', '.button-minus', function(e) {
-        decrementValue(e);
-    });
-</script>
 
 @endsection

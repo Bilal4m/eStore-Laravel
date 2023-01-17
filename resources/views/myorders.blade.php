@@ -37,7 +37,8 @@
                     @if ($loop->first)
                  #{{$item->tracking_id}} 
                     @endif
-                 @endforeach </span>
+                 @endforeach
+                 </span>
                   <span class="me-3">Visa -1234</span>
                   <span class="badge rounded-pill bg-info">SHIPPING</span>
                 </div>
@@ -72,7 +73,7 @@
                       
                     </td>
                     
-                    <td>{{$item->total_qty_product}}</td>
+                    <td>{{$item->product_qty}}</td>
                     <td class="text-end">{{$item->price}}</td>
                   </tr>
                   @endforeach
@@ -99,7 +100,11 @@
                   </tr> --}}
                   <tr>
                     <td colspan="2">Shipping</td>
-                    <td class="text-end">200</td>
+                    <td class="text-end">{{$item->d_charges}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Tax</td>
+                    <td class="text-end">{{$item->tax_amt}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">Discount </td>
@@ -107,7 +112,7 @@
                   </tr>
                   <tr class="fw-bold">
                     <td colspan="2">TOTAL</td>
-                    <td class="text-end">PKR {{$item->sub_total +200}}</td>
+                    <td class="text-end">PKR {{$item->sub_total }}</td>
                   </tr>
                 </tfoot>
               </table>
@@ -125,14 +130,17 @@
                 <div class="col-lg-6">
                   <h3 class="h6">Billing address</h3>
                   <address>
-                    <strong>{{session('user')['user_name']}}</strong><br>
+                    <strong>{{session('user')['user_name']}}</strong>
+                 <br>
+                    {{{$item->country}}},<br>
+                    {{{$item->state}}},<br>
                     @foreach ($orders as $item)
                     @if ($loop->first)
-                 {{$item->address}} 
+                 {{$item->address}}, 
                     @endif
-                 @endforeach <br>
-                    San Francisco, CA 94103<br>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                 @endforeach 
+                    <br> <abbr title="Phone">P:</abbr> 
+                    (+92) {{$item->phone}}
                   </address>
                 </div>
               </div>
@@ -151,14 +159,16 @@
               <hr>
               <h3 class="h6">Address</h3>
               <address>
-                <strong>{{session('user')['user_name']}}</strong><br>
+                <strong>{{session('user')['user_name']}}</strong>
+             <br>
+                {{{$item->country}}},<br>
+                {{{$item->state}}},<br>
                 @foreach ($orders as $item)
                 @if ($loop->first)
-             {{$item->address}} 
+             {{$item->address}}, 
                 @endif
-             @endforeach <br>
-                San Francisco, CA 94103<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
+             @endforeach 
+               <br> <abbr title="Phone">P:</abbr> (+92) {{$item->phone}}
               </address>
             </div>
           </div>
