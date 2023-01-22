@@ -4,33 +4,27 @@
       <!-- Section: Social media -->
       <section class="mb-4">
         <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-facebook-f"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/bilal.rasheed.549?mibextid=LQQJ4d" role="button" target="_blank" ><i class="fab fa-facebook-f"></i
         ></a>
   
         <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-twitter"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/bilal_4m" role="button" target="_blank"><i class="fab fa-twitter"></i
         ></a>
   
         <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-google"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://youtube.com/@fabauwrites3136" role="button" target="_blank"><i class="fab fa-google"></i
         ></a>
   
         <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-instagram"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/bilal_4m?igshid=YmMyMTA2M2Y=" role="button" target="_blank"><i class="fab fa-instagram"></i
         ></a>
   
         <!-- Linkedin -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-linkedin-in"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/mebilalrasheed" role="button" target="_blank"><i class="fab fa-linkedin-in"></i
         ></a>
   
         <!-- Github -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-          ><i class="fab fa-github"></i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Bilal4m" role="button" target="_blank"><i class="fab fa-github"></i
         ></a>
       </section>
       <!-- Section: Social media -->

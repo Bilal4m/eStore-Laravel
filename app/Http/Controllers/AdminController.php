@@ -17,7 +17,7 @@ class AdminController extends Controller
         if(!$admin || !Hash::check($request->admin_password, $admin->admin_password))
         {
             alert()->error('Login failed','email and passwords not matched');
-            return redirect('/admin_login');        }
+            return redirect('/');        }
         else{
             // $data = $request->input('name');
             $request->session()->put('admin',$admin);

@@ -51,6 +51,8 @@
 
 
       @import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
 
 * {
     margin: 0;
@@ -145,20 +147,25 @@
 }
 
 button[type="submit"] {
-    background: linear-gradient(to right, #0000ff 0%, #6666ff 100%);
+    /* background: linear-gradient(to right, #0000ff 0%, #6666ff 100%);
     border: 1px solid linear-gradient(to right, #0000ff 0%, #6666ff 100%);
-    ;
-    border-radius: 2px solid white;
+    ; */
+
+
+    background: #fb8691;
+    /* border-radius: 2px solid white; */
     color: #fff;
     font-size: 18px;
     letter-spacing: 1px;
     font-weight: 600;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+    border: none;
 }
 
 button[type="submit"]:hover {
-    background: linear-gradient(to left, #0000ff 0%, #6666ff 100%);
+    background: linear-gradient(to left, #fb8691 0%, #f1b1b7 100%);
+    color:white;
 }
 
 .login {

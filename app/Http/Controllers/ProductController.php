@@ -59,6 +59,11 @@ class ProductController extends Controller
         return Cart::where('user_id',$userId)->count();
     }
 
+    static function myOrdersItem(){
+        $userId = session()->get('user')['id'];
+        return Order::where('user_id',$userId)->count();
+    }
+
     function cartList(){
        
         if (session()->has('user'))
@@ -85,8 +90,8 @@ class ProductController extends Controller
         // ->select('users.user_name')
         // ->get();
         //  return view('full_cart',['products'=>$userId]);
-      return  $total = Cart::session('user')->getTotal();
-        //  return view('full_cart');
+    //   return  $total = Cart::session('user')->getTotal();
+         return view('full_cart');
  
     }
     function emptyCart(){
@@ -94,7 +99,7 @@ class ProductController extends Controller
         return redirect('/');
     }
     function noOrder(){
-        alert()->warning('ALERT','You have no orders');
+        alert()->warning('ALERT','You have no orders please buy products');
         return redirect('/');
     }
 

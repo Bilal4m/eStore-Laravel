@@ -1,6 +1,7 @@
 @include('admin.admin_master')
+@include('admin.modal_style')
 
-<div class="col-lg-12 col-md-2 main-div">
+{{-- <div class="col-lg-12 col-md-2 main-div">
     <nav aria-label="breadcrumb">
       <ol class="col-lg-8 grid-margin breadcrumb">
         <li class="breadcrumb-item"><a href="/admin/admin">Dashboard</a></li>
@@ -41,28 +42,103 @@
           </div>
         </div>
       </div>
-  </div>
-    
-  <style>
-    .main-div{
-      margin-top: 50px;
-     
-    }
-    .col-md-2 {
-      float: right !important;
-  }
-    .card-body{
-      background: rgb(247, 243, 243);
-    }
-    .card{
-      max-width: 100%; 
-   }
-    .breadcrumb{
-      background: rgb(206, 201, 201);
-      margin-right: 12px;
-    }
-    
+  </div> --}}
+
+  {{-- //new --}}
+  {{-- <div class="modal add-product-model fade" id="ModalAddProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body p-4 p-md-5">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="ion-ios-person"><i class="fa-brands fa-product-hunt"></i></span>
+          </div>
+          <h3 class="text-center mb-4">Add New Product</h3>
+          <form class="forms-sample" action="products_add" method="POST">
+            @csrf
+            <div class="form-group">
+              <input type="text" name="name" required class="form-control rounded-left" placeholder="name">
+            </div>
+            <div class="form-group d-flex">
+              <input type="text" name="price" required class="form-control rounded-left" placeholder="price">
+            </div>
+            <div class="form-group d-flex">
+              <input type="text" name="category" required class="form-control rounded-left" placeholder="category">
+            </div>
+            <div class="form-group d-flex">
+              <input type="text" name="gallery" required class="form-control rounded-left" placeholder="gallery">
+            </div>
+            <div class="form-group d-flex">
+              <input type="text" name="description" required class="form-control rounded-left" placeholder="description">
+            </div>
+            <div class="form-group d-flex">
+              <input type="text" name="qty" required class="form-control rounded-left" placeholder="qty">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="form-control btn btn-primary rounded submit px-3">Add Product</button>
+            </div>
+            <div class="form-group d-md-flex">
+              <div class="form-check w-50">
+             
+                
+              </div>
+             
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+        </div>
+      </div>
+    </div>
+  </div> --}}
+
+  {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> --}}
+
+
+  
+
+    <div class="icon d-flex align-items-center justify-content-center">
+      <span class="ion-ios-person"><i class="fa-brands fa-product-hunt"></i></span>
+    </div>
+    <h3 class="text-center mb-4">Add New Product</h3>
+    <form class="forms-sample" action="products_add" method="POST">
+      @csrf
+      <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="price" class="form-control" placeholder="Price">
+      </div>
+      <div class="form-group">
+        <input type="text" name="category" class="form-control" placeholder="Category">
+      </div>
+      <div class="form-group">
+        <input type="text" name="gallery" class="form-control" placeholder="Pic (url)">
+      </div>
+      <div class="form-group">
+        <input type="text" name="description" class="form-control" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <input type="text" name="qty" class="form-control" placeholder="Qty">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Add Product</button>
+      </div>
+      <div class="form-group d-md-flex">
+        <div class="form-check w-50">
+       
+          
+        </div>
+      
+      </div>
+    </form>
+ 
+ 
+
    
-  
-  
-  </style>

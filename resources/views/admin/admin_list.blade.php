@@ -3,6 +3,7 @@
 
   @include('admin.admin_master')
 
+
  <div class="col-lg-12 col-md-2 main-div">
 <nav aria-label="breadcrumb">
   <ol class="col-lg-10 col-md-2 grid-margin breadcrumb">
@@ -20,7 +21,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      {{-- <th scope="col">#</th> --}}
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th colspan="4" scope="col">Operations</th>
@@ -31,11 +32,12 @@
     @foreach ($adminList as $item)
     <tr>
      
-      <th scope="row">{{$item['id']}}</th>
+      {{-- <th scope="row">{{$item['id']}}</th> --}}
       <td>{{$item['admin_name']}}</td>
       <td>{{$item['admin_email']}}</td>
-      <td><a class="active-my" href={{"update_admin/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></td>
-      <td><a class="active-my" href={{"delete_admin/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
+      {{-- <td><a class="active-my" href={{"update_admin/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></td> --}}
+      <td> <button class= "openBtn my-btn1" ><i class="fa-solid fa-pen-to-square"></i>Update</a></button></td>
+      <td><a class="active-my myLink" href={{"delete_admin/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
      
     </tr>
     @endforeach
@@ -46,6 +48,18 @@
 </div>
 </div>
 </div>
+
+<script>
+  $('.openBtn').on('click',function(){
+      $('.modal-body').load('{{"update_admin/".$item['id']}}',function(){
+          $('#myModal').modal({show:true});
+      });
+  });
+  </script>
+
+
+
+
 <style>
   .main-div{
     margin-top: 50px;

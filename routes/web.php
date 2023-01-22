@@ -44,7 +44,7 @@ Route::get('/logout' , [UserController::class, 'userLogout']);
 
 // check if user already loged in
 Route::get('/login', [UserController::class , 'ifUserLogin']);
-Route::view("/register", 'register');
+// Route::view("/register", 'register');
 Route::post('/login', [UserController::class , 'login']);
 Route::post('/register', [UserController::class , 'register']);
 
@@ -55,7 +55,7 @@ Route::get("/search", [ProductController::class , 'search']);
 Route::post("add_to_cart", [ProductController::class , 'addToCart']);
 Route::get("cart_list", [ProductController::class , 'cartList']);
 Route::get("emptycart", [ProductController::class , 'emptyCart']);
-Route::get("noorder", [ProductController::class , 'noOrder']);
+Route::get("noOrder", [ProductController::class , 'noOrder']);
 Route::get("full_cart", [ProductController::class , 'cartFull']);
 Route::get("remove_cart/{id}", [ProductController::class , 'removeCart']);
 Route::get("buy_now", [ProductController::class , 'buyNow']);
@@ -78,7 +78,7 @@ Route::get('/admin_login', [AdminController::class , 'ifAdminLogin']);
 Route::get('/admin/admin_profile', [AdminController::class , 'adminProfile']);
 Route::get('/admin/admin_settings', [AdminController::class , 'adminSettings']);
 
-// product crud ny admin
+// product crud by admin
 Route::get('/admin/products_list', [AdminController::class , 'productsList']);
 Route::view("/admin/products_add" , '/admin/products_add');
 Route::post('/admin/products_add', [AdminController::class , 'productsAdd']);

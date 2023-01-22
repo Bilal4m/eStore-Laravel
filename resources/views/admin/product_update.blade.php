@@ -1,16 +1,13 @@
 @include('admin.admin_master')
+@include('admin.modal_style')
 
-<div class="col-lg-12 col-md-2 main-div">
-        <nav aria-label="breadcrumb">
-          <ol class="col-lg-8 grid-margin breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin/admin">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Update User</li>
-          </ol>
-        </nav>
-        <div class="col-lg-10 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-        <h2 class="mb-4">Update Product</h2>
+
+        <div class="icon d-flex align-items-center justify-content-center">
+          <span class="ion-ios-person">
+            <i class='bx bx-user nav__icon' ></i>
+          </span>
+        </div>
+        <h3 class="text-center mb-4">Update Product</h3>
                  <form class="forms-sample" action="/admin/product_update" method="POST">
                     @csrf
                     <div class="form-group">
@@ -40,28 +37,7 @@
                 
                  
                   <button type="submit" class="btn btn-primary me-2">Update</button>
-                  <button class="btn btn-light">Cancel</button>
+                  <button class="btn btn-light"  data-dismiss="modal">Cancel</button>
                 </form>
-              </div>
-            </div>
-          </div>
-      </div>
-      <style>
-        .main-div{
-          margin-top: 50px;
-         
-        }
-        .col-md-2 {
-          float: right !important;
-      }
-        .card-body{
-          background: rgb(247, 243, 243);
-        }
-        .card{
-          max-width: 100%; 
-       }
-        .breadcrumb{
-          background: rgb(206, 201, 201);
-          margin-right: 12px;
-        }
-      </style>
+      
+      

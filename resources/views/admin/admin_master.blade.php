@@ -15,7 +15,15 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>E-Store Dashboard</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<title>E-Store Dashboard</title>
 </head>
 <body>
   @include('sweetalert::alert')
@@ -80,8 +88,12 @@
                             <div class="nav__dropdown-collapse">
                                 <div class="nav__dropdown-content">
                                     <a href="/admin/admin_list" class="nav__dropdown-item">List</a>
-                                    <a href="/admin/add_admin" class="nav__dropdown-item">Add New </a>
+                                    {{-- <a href="/admin/add_admin" class="nav__dropdown-item">Add New </a> --}}
+                                    <button type="" class="AdminAdd my-btn nav__dropdown-item my-btn">
+                                      Add</button>
+                                    {{-- <a href="/admin/add_admin" class="nav__dropdown-item" data-target="exampleModalCenterAddAdmin" data-toggle="modal">Add New </a> --}}
                                     <a href="/admin/admin_list" class="nav__dropdown-item">Manage </a>
+                                 
                                 </div>
                             </div>
                         </div>
@@ -103,15 +115,19 @@
 
                       <div class="nav__dropdown">
                         <a href="#" class="nav__link">
-                            <i class='bx bx-user nav__icon' ></i>
+                            <i class='fa-brands fa-product-hunt nav__icon' ></i>
                             <span class="nav__name">Products</span>
-                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon '></i>
+                            {{-- <i class="fa-brands fa-product-hunt "></i> --}}
                         </a>
 
                         <div class="nav__dropdown-collapse">
                             <div class="nav__dropdown-content">
                                 <a href="/admin/products_list" class="nav__dropdown-item">List Products</a>
-                                <a href="/admin/products_add" class="nav__dropdown-item">Add New </a>
+                                {{-- <a href="/admin/products_add" class="nav__dropdown-item">Add New </a> --}}
+                                {{-- <a href="/admin/products_add" class="nav__dropdown-item" >Add New </a> --}}
+                                 <button type="" class="openBtn my-btn nav__dropdown-item my-btn">
+                                  Add</button>
                                 <a href="/admin/users_manage" class="nav__dropdown-item">Manage </a>
                             </div>
                         </div>
@@ -165,12 +181,48 @@
     </div>
 
     <!--========== CONTENTS ==========-->
-   
+    <div class="modal admin-model fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+		      </div>
+		      <div class="modal-body p-4 p-md-5">
+		      {{-- // content --}}
+		      </div>
+		      <div class="modal-footer justify-content-center">
+		      	{{-- <p>Not a member? <a href="user-signup-model" data-toggle="modal" data-target="#exampleModalCenterAdminSignup" data-dismiss="modal">Create an account</a></p> --}}
+		      </div>
+		    </div>
+		  </div>
+		</div>
+    {{-- // script to open add products pop-up modal --}}
+    <script>
+      $('.openBtn').on('click',function(){
+          $('.modal-body').load('products_add',function(){
+              $('#myModal').modal({show:true});
+          });
+      });
+      </script>
+       {{-- // script to open add admin pop-up modal --}}
+    <script>
+      $('.AdminAdd').on('click',function(){
+          $('.modal-body').load('add_admin',function(){
+              $('#myModal').modal({show:true});
+          });
+      });
+      </script>
+
 
     <!--========== MAIN JS ==========-->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
 
 <script>
   /*==================== SHOW NAVBAR ====================*/
@@ -253,6 +305,53 @@ body{
     background-color: var(--body-color);
     color: var(--text-color);
 }
+.admin-model{
+  margin-top: 40px;
+  height: 90%;
+}
+.my-btn{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: -55px;
+}
+.my-btn:hover{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: -55px;
+}
+.my-btn1{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #ffc120;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: -55px;
+}
+.my-btn1:hover{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #c4a035;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: -55px;
+}
+.myLink{
+  color: rgb(248, 47, 11);
+}
+.myLink:hover{
+  color: rgb(248, 135, 115);
+}
+
 h3{
     margin: 0;  
 }

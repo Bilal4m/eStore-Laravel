@@ -243,7 +243,8 @@ if( $sum >=2000){
             </div>
           </div>
           <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          {{-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> --}}
+          <button class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default" type="submit">Continue to checkout</button>
         </form>
       </div>
     </div>
@@ -288,6 +289,7 @@ if( $sum >=2000){
 </body>
 
 <style>
+   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
   h2 {
     font-size: 40px;
     background: linear-gradient(to left, #660066 0%, #ff3300 100%);

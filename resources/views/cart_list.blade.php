@@ -85,6 +85,12 @@ body {
   background:#eee;
 }
 
+.btn-outline-warning:hover{
+ background-color: #fd6d7c;
+ border: none;
+ color: white;
+}
+
 .size span {
   font-size: 11px;
 }
@@ -103,10 +109,13 @@ body {
 
 .pay-button {
   color: #fff;
+  background-color: #fb8691;
+  border: none;
 }
 
 .pay-button:hover {
-  color: #fff;
+  color: #fb8691;
+  background-color: #fd6d7c;
 }
 
 .pay-button:focus {

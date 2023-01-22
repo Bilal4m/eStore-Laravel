@@ -15,11 +15,10 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              {{-- <th scope="col">#</th> --}}
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Email</th>
-              
+              <th colspan="4" >Operations</th>
             </tr>
           </thead>
           <tbody>
@@ -27,11 +26,11 @@
             @foreach ($userManage as $item)
             <tr>
              
-              <th scope="row">{{$item['id']}}</th>
+              {{-- <th scope="row">{{$item['id']}}</th> --}}
               <td>{{$item['user_name']}}</td>
               <td>{{$item['user_email']}}</td>
               <td><a class="active-my" href={{"update_user/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></td>
-              <td><a class="active-my" href={{"user_delete/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
+              <td><a class="active-my myLink" href={{"user_delete/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
              
             </tr>
             @endforeach

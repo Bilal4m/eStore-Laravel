@@ -20,7 +20,8 @@ class UserController extends Controller
         $user->user_email = $request->user_email;
         $user->user_password = Hash::make($request->user_password);
         $user->save();
-        return redirect('/login');
+        alert()->success('Success','User registered successfully');
+        return redirect('/');
     }
 
 
@@ -30,7 +31,7 @@ class UserController extends Controller
         if(!$user || !Hash::check($request->user_password, $user->user_password))
         {
             alert()->error('Login failed','email and passwords not matched');
-            return redirect('/login');
+            return redirect('/');
         }
         else{
             

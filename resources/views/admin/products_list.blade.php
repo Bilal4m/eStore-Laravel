@@ -16,7 +16,7 @@
     <div class="col-md-4">
         <div class="card rounded">
             <div class="card-image">
-                <a href="detail/{{$item['id']}}" target="_blank">
+                <a href="{{$item['id']}}" target="_blank">
                 <span class="card-notify-badge">{{$item['name']}}</span>
                 <span class="card-notify-year">2018</span>
                 <img class="img-fluid" src="{{$item['gallery']}}" alt="Alternate Text" />
@@ -31,7 +31,9 @@
                 <div class="ad-title m-auto">
                     <h5>{{$item->name}}</h5>
                 </div>
-                <a class="ad-btn" href={{"product_update/".$item['id']}}>Edit Item</a>
+                {{-- <a class="ad-btn" href={{"product_update/".$item['id']}}>Edit Item</a> --}}
+                {{-- <button class= "updateProduct ad-btn " > Update Item</button> --}}
+                <td> <button class= "updateProduct ad-btn" ><i class="fa-solid fa-pen-to-square"></i>Update</a></button></td>
                 <a class="ad-btn" href={{"product_delete/".$item['id']}}>Remove Item</a>
             </div> 
             
@@ -39,13 +41,25 @@
         </div>  <br><br>
     </div> 
    
+   
     @endforeach 
+    
     <div>
+        
         {{$products->links()}}
     </div> 
 </div>
-
+<script>
+    $('.updateProduct').on('click',function(){
+        $('.modal-body').load('{{"product_update/".$item['id']}}',function(){
+            $('#myModal').modal({show:true});
+        });
+    });
+    </script>
 </div>
+
+
+
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -168,4 +182,13 @@
                 border-bottom: 1px solid #000;
                 margin: auto;
             }
+
+            .updateProduct{
+                text-decoration: none;
+                color: #000;
+            }
+            .updateProduct:hover{
+                text-decoration: none;
+            }
+
     </style>
