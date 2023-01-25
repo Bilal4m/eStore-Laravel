@@ -23,11 +23,13 @@ class AdminForUserController extends Controller
 
      // update user or delet
      function userDelete($id){
-        $user = User::get($id);
+        $user = User::find($id);
         $user->delete();
         alert()->warning('Deleted','User Deleted');
         return redirect ('admin/admin');
      }
+
+    
 
      function fecthUserForUpdate($id)
      {

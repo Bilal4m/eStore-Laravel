@@ -5,17 +5,16 @@
 
 
      
-<div class="icon d-flex align-items-center justify-content-center">
-  <span class="ion-ios-person">
-    <i class='bx bx-user nav__icon' ></i>
-  </span>
-</div>
-<h3 class="text-center mb-4">Update Admin</h3>
+
+      <div class="modal-body p-4 p-md-5">
+        <div class="icon d-flex align-items-center justify-content-center">
+          <span class="ion-ios-person"><i class="fa-solid fa-user"></i></span>
+        </div>
+         <h3 class="text-center mb-4">Update Admin</h3>
              
                        <form class="forms-sample" action="/admin/update_admin" method="POST">
                           @csrf
                           <div class="form-group">
-                              {{-- <label for="exampleInputUsername1">Admin Name</label> --}}
                               <input type="hidden" name="id" class="form-control" value={{$admin['id']}} id="exampleInputUsername1" placeholder="Username">
                             </div>
                         <div class="form-group">
@@ -41,6 +40,6 @@
             </div>
             </div>
             <div class="modal-footer justify-content-center">
-              {{-- <p>Not a member? <a href="user-signup-model" data-toggle="modal" data-target="#exampleModalCenterAdminSignup" data-dismiss="modal">Create an account</a></p> --}}
-            </div>
-    
+            </div>  
+
+            

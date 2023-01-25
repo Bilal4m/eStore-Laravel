@@ -2,6 +2,9 @@
   
 
   @include('admin.admin_master')
+  @include('admin.modal_style')
+
+ 
 
 
  <div class="col-lg-12 col-md-2 main-div">
@@ -36,26 +39,27 @@
       <td>{{$item['admin_name']}}</td>
       <td>{{$item['admin_email']}}</td>
       {{-- <td><a class="active-my" href={{"update_admin/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></td> --}}
-      <td> <button class= "openBtn my-btn1" ><i class="fa-solid fa-pen-to-square"></i>Update</a></button></td>
+      <td> <button class="openBtn my-btn">  <a href={{"update_admin/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a> </button></td>
       <td><a class="active-my myLink" href={{"delete_admin/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
-     
+      
     </tr>
+
+
     @endforeach
   
   </tbody>
 </table>
+
+
 </div>
 </div>
 </div>
 </div>
 
-<script>
-  $('.openBtn').on('click',function(){
-      $('.modal-body').load('{{"update_admin/".$item['id']}}',function(){
-          $('#myModal').modal({show:true});
-      });
-  });
-  </script>
+
+
+
+
 
 
 

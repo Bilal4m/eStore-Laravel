@@ -30,7 +30,7 @@
               <td>{{$item['user_name']}}</td>
               <td>{{$item['user_email']}}</td>
               <td><a class="active-my" href={{"update_user/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></td>
-              <td><a class="active-my myLink" href={{"user_delete/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
+              <td><a class="active-my myLink" href={{"delete_user/".$item['id']}}><i class="fa-solid fa-trash"></i>Delete</a></td>
              
             </tr>
             @endforeach

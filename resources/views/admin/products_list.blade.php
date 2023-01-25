@@ -33,7 +33,7 @@
                 </div>
                 {{-- <a class="ad-btn" href={{"product_update/".$item['id']}}>Edit Item</a> --}}
                 {{-- <button class= "updateProduct ad-btn " > Update Item</button> --}}
-                <td> <button class= "updateProduct ad-btn" ><i class="fa-solid fa-pen-to-square"></i>Update</a></button></td>
+                <td> <button class= "updateProduct ad-btn" ><a href={{"product_update/".$item['id']}}><i class="fa-solid fa-pen-to-square"></i>Update</a></button></td>
                 <a class="ad-btn" href={{"product_delete/".$item['id']}}>Remove Item</a>
             </div> 
             

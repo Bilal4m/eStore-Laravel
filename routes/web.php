@@ -71,39 +71,44 @@ Route::post("admin_login" , [AdminController::class, 'adminLogin']);
 Route::view("add_products" , 'add_products');
 // Route::post("add_products", [AdminController::class , 'add_products']);
 Route::get("admin_login", [AdminController::class , 'adminLogin']);
-Route::view("admin/admin" , 'admin/admin');
-Route::get('/admin/admin_logout' , [AdminController::class, 'adminLogout']);
-Route::get('/admin_login', [AdminController::class , 'ifAdminLogin']);
 
-Route::get('/admin/admin_profile', [AdminController::class , 'adminProfile']);
-Route::get('/admin/admin_settings', [AdminController::class , 'adminSettings']);
+
+// protected routes with admin
+Route::middleware(['adminRoute'])->group(function () {
+         Route::view("admin/admin" , 'admin/admin');
+         Route::get('/admin/admin_logout' , [AdminController::class, 'adminLogout']);
+         Route::get('/admin_login', [AdminController::class , 'ifAdminLogin']);
+
+         Route::get('/admin/admin_profile', [AdminController::class , 'adminProfile']);
+         Route::get('/admin/admin_settings', [AdminController::class , 'adminSettings']);
 
 // product crud by admin
-Route::get('/admin/products_list', [AdminController::class , 'productsList']);
-Route::view("/admin/products_add" , '/admin/products_add');
-Route::post('/admin/products_add', [AdminController::class , 'productsAdd']);
-Route::get('admin/product_delete/{id}', [AdminController::class , 'deleteProduct']);
-Route::get("admin/product_update/{id}", [AdminController::class , 'fecthProductForUpdate']);
-Route::post("admin/product_update", [AdminController::class , 'productDataUpdate']);
+         Route::get('/admin/products_list', [AdminController::class , 'productsList']);
+         Route::view("/admin/products_add" , '/admin/products_add');
+         Route::post('/admin/products_add', [AdminController::class , 'productsAdd']);
+         Route::get('admin/product_delete/{id}', [AdminController::class , 'deleteProduct']);
+         Route::get("admin/product_update/{id}", [AdminController::class , 'fecthProductForUpdate']);
+         Route::post("admin/product_update", [AdminController::class , 'productDataUpdate']);
 
 
-Route::view('/admin/check','/admin/check');
+         Route::view('/admin/check','/admin/check');
 
 // admin crud
-Route::view('admin/add_admin','admin/add_admin');
-Route::post("/admin/add_admin", [AdminCRUDController::class , 'add_admin']);
-Route::get("admin/delete_admin/{id}", [AdminCRUDController::class , 'adminDelete']);
-Route::get("admin/update_admin/{id}", [AdminCRUDController::class , 'fecthAdminForUpdate']);
-Route::post("admin/update_admin", [AdminCRUDController::class , 'adminDataUpdate']);
-Route::get("admin/admin_list", [AdminCRUDController::class , 'adminList']);
+         Route::view('admin/add_admin','admin/add_admin');
+         Route::post("/admin/add_admin", [AdminCRUDController::class , 'add_admin']);
+         Route::get("admin/delete_admin/{id}", [AdminCRUDController::class , 'adminDelete']);
+         Route::get("admin/update_admin/{id}", [AdminCRUDController::class , 'fecthAdminForUpdate']);
+         Route::post("admin/update_admin", [AdminCRUDController::class , 'adminDataUpdate']);
+         Route::get("admin/admin_list", [AdminCRUDController::class , 'adminList']);
 
-// user crud which is perform by admin
-Route::get("admin/users_list", [AdminForUserController::class , 'usersList']);
-Route::get("admin/users_manage", [AdminForUserController::class , 'usersManage']);
-Route::get("admin/delete_user/{id}", [AdminForUserController::class , 'userDelete']);
-Route::get("admin/update_user/{id}", [AdminForUserController::class , 'fecthUserForUpdate']);
-Route::post("admin/update_user", [AdminForUserController::class , 'userDataUpdate']);
 
+ // user crud which is perform by admin
+         Route::get("admin/users_list", [AdminForUserController::class , 'usersList']);
+         Route::get("admin/users_manage", [AdminForUserController::class , 'usersManage']);
+         Route::get("admin/delete_user/{id}", [AdminForUserController::class , 'userDelete']);
+         Route::get("admin/update_user/{id}", [AdminForUserController::class , 'fecthUserForUpdate']);
+         Route::post("admin/update_user", [AdminForUserController::class , 'userDataUpdate']);
+ });   
 
 
 

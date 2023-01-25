@@ -99,7 +99,7 @@ class ProductController extends Controller
         return redirect('/');
     }
     function noOrder(){
-        alert()->warning('ALERT','You have no orders please buy products');
+        alert()->warning('ALERT','You have no order placed yet please place some order');
         return redirect('/');
     }
 
