@@ -59,7 +59,7 @@
             <div class="card-image">
                 <a href="detail/{{$item['id']}}" target="_blank">
                 <span class="card-notify-badge">{{$item['name']}}</span>
-                <span class="card-notify-year">2018</span>
+                <span class="card-notify-year">New</span>
                 <img class="img-fluid" src="{{$item['gallery']}}" alt="Alternate Text" />
             </div>
             <div class="card-image-overlay m-auto">
@@ -75,7 +75,7 @@
                 <a class="ad-btn" href="detail/{{$item['id']}}">More Details</a>
             </div> 
             
-        </a>
+       
         </div>  
        
     </div> 

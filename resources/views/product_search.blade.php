@@ -3,7 +3,7 @@
 
 <div class="container">
     <br>
-    <h4>Bootstrap 4 and CCS3 Product Cards with Transition - Techhowdy(demonguru18) - Lyoid Lopes</h2>
+    <h4>Searched Product  </h2>
 	<br>
 	<div class="row" id="ads">
     <!-- Category Card -->

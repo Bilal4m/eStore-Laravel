@@ -64,7 +64,7 @@
       </style>
        --}}
        <div class="icon d-flex align-items-center justify-content-center">
-        <span class="ion-ios-person"><i class="fa-brands fa-product-hunt"></i></span>
+        <span class="ion-ios-person"><i class="fa-solid fa-user-plus"></i></span>
       </div>
       <h3 class="text-center mb-4">Add New Admin</h3>
       <form class="forms-sample" action="add_admin" method="POST">

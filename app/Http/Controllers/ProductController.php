@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Order_status;
 use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
@@ -49,7 +50,7 @@ class ProductController extends Controller
         }
         else{
             alert()->warning('Alert','Please login first');
-            return redirect('/login');
+            return redirect('/');
         }
      }
 
@@ -78,7 +79,7 @@ class ProductController extends Controller
     }
   else{
     alert()->warning('Alert','Please login first');
-            return redirect('/login');
+            return redirect('/');
 }
     }
 
@@ -160,6 +161,8 @@ function orderPlace(Request $request){
     return redirect('/');
    
 }
+
+
 function myOrders(){
     $userId = session()->get('user')['id'];
      $orders = DB::table('orders')
@@ -185,16 +188,33 @@ function myOrders(){
 //        }
 //  }
 
-  function increaseQuantity($product_id){
-    $product = Cart::get($product_id);
-    $qty = $product->qty + 1;
-    Cart::update($product_id,$qty);
-  }
+//   function increaseQuantity($product_id){
+//     $product = Cart::get($product_id);
+//     $qty = $product->qty + 1;
+//     Cart::update($product_id,$qty);
+//   }
 
-  function decreaseQuantity($product_id){
-    $product = Cart::get($product_id);
-    $qty = $product->qty - 1;
-    Cart::update($product_id,$qty);
+//   function decreaseQuantity($product_id){
+//     $product = Cart::get($product_id);
+//     $qty = $product->qty - 1;
+//     Cart::update($product_id,$qty);
+//   }
+
+  function checkStatus(){
+    $check_status = Order_status::first();
+    if (is_null($check_status)){
+    
+    alert()->info('Info','Your order is still pending');
+    return redirect('/myorders');
+   }
+   else{
+     $p_orders =DB::table('order_status')
+    ->join('users','users.id','order_status.customer_uid')
+    ->select('order_status.*')
+    ->get();
+    return view('check_status',['check_status'=>$p_orders]);
+   }
+
   }
 
 

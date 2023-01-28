@@ -6,7 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\facades\Hash;
 use App\Models\Admin;
 use App\Models\Product;
+use App\Models\Cart;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Order_status;
+use App\Models\Order_approved;
+use App\Models\Order_rejected;
 use Illuminate\Support\Facades\DB;
+
+
+
 
 class AdminController extends Controller
 {
@@ -119,5 +128,69 @@ class AdminController extends Controller
         return redirect('admin/admin');
      
        }
- 
+
+
+       // view pending orders by admin
+       function pendingOrders(){
+      $p_orders =DB::table('orders')
+                  ->join('products','orders.product_id','products.id')
+                //   ->join('users','orders.user_id','users.id')
+                //   ->where('orders.user_id', 'users.id')
+                  ->select('orders.*','products.*')
+                  ->get();
+     return view('admin/pending_orders',['orders'=>$p_orders ]);
+    }
+
+    function approvedOrders(Request $request){
+        $status = new Order_status;
+        $status->status = $request->status;
+        $status->message = $request->message;
+        $status->customer_fname = $request->customer_fname;
+        $status->customer_lname = $request->customer_lname;
+        $status->customer_phone = $request->customer_phone;
+        $status->customer_tid = $request->customer_tid;
+        $status->customer_pid = $request->customer_pid;
+        $status->customer_uid = $request->customer_uid;
+        $status->customer_gallery = $request->customer_gallery;
+        $status->save();
+        alert()->success('Success', 'Order Accepted and message sent to user');
+        return redirect('admin/admin');
+    }
+
+    function rejectedOrders(Request $request){
+       
+        $status = new Order_status;
+        $status->status = $request->status;
+        $status->message = $request->message;
+        $status->customer_fname = $request->customer_fname;
+        $status->customer_lname = $request->customer_lname;
+        $status->customer_phone = $request->customer_phone;
+        $status->customer_tid = $request->customer_tid;
+        $status->customer_pid = $request->customer_pid;
+        $status->customer_uid = $request->customer_uid;
+        $status->customer_gallery = $request->customer_gallery;
+        $status->save();
+        alert()->warning('Alert', 'Order rejected and message sent to user');
+        Order_status::where('status','accepted')->delete();
+        return redirect('admin/admin');
+    }
+  
+    function viewApprovedOrders(){
+        // $a_orders =  Order_approved::all();
+        
+        $a_orders = DB::table('order_status')
+        ->where('status','accepted')
+        ->get();
+        return view('admin/view_approved_orders',['orders'=>$a_orders ]);
+    }
+
+    function ViewRejectedOrders(){
+        $r_orders =  DB::table('order_status')
+        
+        ->where('status','rejected')
+        ->get();
+         return view('admin/view_rejected_orders',['orders'=>$r_orders ]);       
+    }
+    
 }
+

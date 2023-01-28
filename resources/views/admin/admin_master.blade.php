@@ -80,7 +80,7 @@
                         
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
-                                <i class='bx bx-user nav__icon' ></i>
+                                <i class='fa-sharp fa-solid fa-user nav__icon' ></i>
                                 <span class="nav__name">Admins</span>
                                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                             </a>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="nav__dropdown">
                           <a href="#" class="nav__link">
-                              <i class='bx bx-user nav__icon' ></i>
+                              <i class='fa-solid fa-user nav__icon' ></i>
                               <span class="nav__name">Users</span>
                               <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                           </a>
@@ -132,6 +132,23 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="nav__dropdown">
+                      <a href="#" class="nav__link">
+                          <i class='fa-solid fa-shop nav__icon' ></i>
+                          <span class="nav__name">Orders</span>
+                          <i class='bx bx-chevron-down nav__icon nav__dropdown-icon '></i>
+                          {{-- <i class="fa-brands fa-product-hunt "></i> --}}
+                      </a>
+
+                      <div class="nav__dropdown-collapse">
+                          <div class="nav__dropdown-content">
+                              <a href="/admin/pending_orders" class="nav__dropdown-item">Pendings</a>
+                              <a href="/admin/view_approved_orders" class="nav__dropdown-item">Approved  </a>
+                              <a href="/admin/view_rejected_orders" class="nav__dropdown-item">Rejected  </a>
+                          </div>
+                      </div>
+                  </div>
 
                         <a href="#" class="nav__link">
                             <i class='bx bx-message-rounded nav__icon' ></i>

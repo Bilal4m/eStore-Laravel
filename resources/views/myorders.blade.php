@@ -42,18 +42,21 @@
                   <span class="me-3">Visa -1234</span>
                   <span class="badge rounded-pill bg-info">SHIPPING</span>
                 </div>
+               <div class="row">
+                <div class="col">
                 <div class="d-flex">
-                  <button class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">Invoice</span></button>
-                  <div class="dropdown">
-                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Edit</a></li>
-                      <li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> Print</a></li>
-                    </ul>
-                  </div>
+                  <button class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text "><a href="/check_status" ><i class="bi bi-download"></i> <span class="text">Status</span></a></button>
+                  
                 </div>
+              </div>
+                <div class="col">
+                <div class="d-flex">
+                  <button class="btn btn-success p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">PDF </span></button>
+                </div>
+              </div>
+               </div>
+                
+
               </div>
               <table class="table table-borderless">
                 <tbody>
@@ -176,6 +179,9 @@
       </div>
     </div>
       </div>
+
+      
+     
 <style>
     body{
     background:#eee;

@@ -63,6 +63,7 @@ Route::post("orderplace", [ProductController::class , 'orderPlace']);
 Route::get("myorders", [ProductController::class , 'myOrders']);
 
 Route::post("update-cart", [ProductController::class , 'updateCart']);
+Route::get("check_status", [ProductController::class , 'checkStatus']);
 
 
 // admin section
@@ -90,8 +91,9 @@ Route::middleware(['adminRoute'])->group(function () {
          Route::get("admin/product_update/{id}", [AdminController::class , 'fecthProductForUpdate']);
          Route::post("admin/product_update", [AdminController::class , 'productDataUpdate']);
 
-
          Route::view('/admin/check','/admin/check');
+
+
 
 // admin crud
          Route::view('admin/add_admin','admin/add_admin');
@@ -102,6 +104,7 @@ Route::middleware(['adminRoute'])->group(function () {
          Route::get("admin/admin_list", [AdminCRUDController::class , 'adminList']);
 
 
+
  // user crud which is perform by admin
          Route::get("admin/users_list", [AdminForUserController::class , 'usersList']);
          Route::get("admin/users_manage", [AdminForUserController::class , 'usersManage']);
@@ -110,7 +113,16 @@ Route::middleware(['adminRoute'])->group(function () {
          Route::post("admin/update_user", [AdminForUserController::class , 'userDataUpdate']);
  });   
 
+ // view pending orders by admin
+ Route::get("admin/pending_orders", [AdminController::class , 'pendingOrders']);
+ Route::post("admin/order_status", [AdminController::class , 'orderStatus']);
 
+
+ Route::post("admin/rejected_orders", [AdminController::class , 'rejectedOrders']);
+ Route::post("admin/approved_orders", [AdminController::class , 'approvedOrders']);
+
+ Route::get("admin/view_rejected_orders", [AdminController::class , 'ViewRejectedOrders']);
+ Route::get("admin/view_approved_orders", [AdminController::class , 'ViewApprovedOrders']);
 
 
 

@@ -10,14 +10,14 @@ foreach ($total as $key => $item) {
  $sum += $item->price * $item->product_qty ; 
 }
 if( $sum >=2000){
-  $dc = $sum*7/100;
+  $dc = $sum*2/100;
 }else{
-  $dc = $sum*5/100;
+  $dc = $sum*1/100;
 }
 if( $sum >=2000){
-  $tax = $sum*4/100;
+  $tax = $sum*1.5/100;
 }else{
-  $tax = $sum*2/100;
+  $tax = $sum*0.5/100;
 }
 ?> 
 <body class="bg-light" cz-shortcut-listen="true">
