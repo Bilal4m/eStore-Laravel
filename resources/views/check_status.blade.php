@@ -12,8 +12,7 @@
                 <div class="card-body">
                 <h2 class="card-title">Dear,{{$item->customer_fname}} {{$item->customer_lname}} </h2>
                 <p class="card-text">Your Order with ID # <strong>{{$item->customer_tid}}</strong> is {{$item->status}}..!</p>
-                <p class="card-text">Please Get Ready  <strong>Rs {{$item->message}}</strong></p>
-                    <p class="card-text">it will deliver within 2-4 working days</p>
+                <p class="card-text">  <strong> {{$item->message}}</strong></p>
                 </div>
             </div>
         </div>

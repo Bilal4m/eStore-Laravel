@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCRUDController;
 use App\Http\Controllers\AdminForUserController;
+use App\Http\Controllers\PDFController;
 
 
 
@@ -53,6 +54,10 @@ Route::get('/', [ProductController::class , 'index']);
 Route::get("detail/{id}", [ProductController::class , 'detail']);
 Route::get("/search", [ProductController::class , 'search']);
 Route::post("add_to_cart", [ProductController::class , 'addToCart']);
+
+Route::post("discount-price", [ProductController::class , 'discountPrice']);
+
+
 Route::get("cart_list", [ProductController::class , 'cartList']);
 Route::get("emptycart", [ProductController::class , 'emptyCart']);
 Route::get("noOrder", [ProductController::class , 'noOrder']);
@@ -65,6 +70,7 @@ Route::get("myorders", [ProductController::class , 'myOrders']);
 Route::post("update-cart", [ProductController::class , 'updateCart']);
 Route::get("check_status", [ProductController::class , 'checkStatus']);
 
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 // admin section
 Route::view('/admin_login', 'admin_login');

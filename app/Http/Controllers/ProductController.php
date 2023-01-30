@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Order_status;
+use App\Models\Order_admin;
 use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
@@ -83,6 +84,8 @@ class ProductController extends Controller
 }
     }
 
+
+
     function cartFull(){
         // $products = Cart::get('id');
         // $userId = DB::table('users')
@@ -148,6 +151,7 @@ function orderPlace(Request $request){
         $order->sub_total = $request->sub_total;
         $order->d_charges= $request->d_charges;
         $order->tax_amt = $request->tax_amt;
+        $order->dis_amt = $request->dis_amt;
         $order->first_name = $request->first_name;
         $order->last_name = $request->last_name;
         $order->country = $request->country;
@@ -162,6 +166,10 @@ function orderPlace(Request $request){
    
 }
 
+   
+   
+
+
 
 function myOrders(){
     $userId = session()->get('user')['id'];
@@ -169,8 +177,8 @@ function myOrders(){
            ->join('products','orders.product_id','products.id')
            ->where('orders.user_id', $userId)
            ->get();
-
- return view('myorders',['orders'=>$orders]);
+            return view('myorders',['orders'=>$orders]);
+            
 }
 
 
@@ -208,15 +216,16 @@ function myOrders(){
     return redirect('/myorders');
    }
    else{
+    $userId = session()->get('user')['id'];
      $p_orders =DB::table('order_status')
     ->join('users','users.id','order_status.customer_uid')
-    ->select('order_status.*')
+    ->where('order_status.customer_uid',$userId)
     ->get();
     return view('check_status',['check_status'=>$p_orders]);
    }
 
   }
 
+}
 
-
-    }
+    

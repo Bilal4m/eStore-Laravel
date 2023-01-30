@@ -237,7 +237,7 @@ a {
 </style> --}}
 
 <div class="container">
-<br>  <p class="text-center">Pending Orders of Customers </p>
+<br>  <h3 class="text-center"><strong>Pending Orders of Customers</strong> </h3>
 <hr>
 
 
@@ -250,6 +250,7 @@ a {
   <th scope="col">{{$item->first_name}} {{$item->last_name}}</th>
   <th scope="col" width="120">Address</th>
   <th scope="col" width="120">Phone</th>
+  <th scope="col" width="120">Tracking ID</th>
   <th scope="col" width="120">Sub Total</th>
   <th scope="col" width="200" class="text-right">Action</th>
 </tr>
@@ -282,6 +283,11 @@ a {
 			{{$item->phone}}
 
 	</td>
+  <td> 
+	
+    {{$item->tracking_id}}
+
+</td>
 	<td> 
 		<div class="price-wrap"> 
 			<var class="price">PKR</var> 
@@ -303,7 +309,10 @@ a {
                 <input type="hidden" name="status" class="form-control rounded-left"  value="accepted">
               </div>
               <div class="form-group ">
-                <input type="hidden" name="message" class="form-control rounded-left"  value= " {{$item->sub_total}}">
+                <input type="hidden" name="message" class="form-control rounded-left"  value= " Please Get Ready amount your order will deliver within 2-4 working days">
+              </div>
+              <div class="form-group ">
+                <input type="hidden" name="customer_tprice" class="form-control rounded-left"  value= " {{$item->sub_total}} ">
               </div>
               <div class="form-group ">
                 <input type="hidden" name="customer_tid" class="form-control rounded-left" value= {{$item->tracking_id}} >
@@ -343,14 +352,17 @@ a {
                             <input type="hidden" name="status" class="form-control rounded-left" value="rejected">
                         </div>
                   <div class="form-group">
-                    <input type="hidden" name="message" class="form-control rounded-left"  value= "sorry your order is rejected">
+                    <input type="hidden" name="message" class="form-control rounded-left"  value= "sorry your order is rejected all items sold out">
+                  </div>
+                  <div class="form-group ">
+                    <input type="hidden" name="customer_tprice" class="form-control rounded-left"  value= " {{$item->sub_total}} ">
                   </div>
                   <div class="form-group">
                     <input type="hidden" name="customer_tid" class="form-control rounded-left"  value= {{$item->tracking_id}} >
                   </div>
               
                     <div class="form-group">
-                      <input type="hidden" name="customer_pid" class="form-control rounded-left" pvalue= {{$item->product_id}}>
+                      <input type="hidden" name="customer_pid" class="form-control rounded-left"  value= {{$item->product_id}}>
                     </div>
                     <div class="form-group">
                       <input type="hidden" name="customer_uid" class="form-control rounded-left"  value= {{$item->user_id}}>

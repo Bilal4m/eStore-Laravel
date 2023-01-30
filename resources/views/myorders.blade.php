@@ -45,13 +45,13 @@
                <div class="row">
                 <div class="col">
                 <div class="d-flex">
-                  <button class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text "><a href="/check_status" ><i class="bi bi-download"></i> <span class="text">Status</span></a></button>
+                  <button class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text "><a href="/check_status" ><span class="text">Status</a></button>
                   
                 </div>
               </div>
                 <div class="col">
                 <div class="d-flex">
-                  <button class="btn btn-success p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">PDF </span></button>
+                  <button class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text "><a href="/generate-pdf" ><span class="text">PDF</span></a></button>
                 </div>
               </div>
                </div>
@@ -77,7 +77,12 @@
                     </td>
                     
                     <td>{{$item->product_qty}}</td>
+                   
                     <td class="text-end">{{$item->price}}</td>
+                
+                   
+                 
+                  
                   </tr>
                   @endforeach
                   <tr>
@@ -103,19 +108,37 @@
                   </tr> --}}
                   <tr>
                     <td colspan="2">Shipping</td>
-                    <td class="text-end">{{$item->d_charges}}</td>
+                    <?php $total_d_charges = 0;
+                    foreach ($orders as $item)
+                    $total_d_charges+= $item->d_charges;
+                    ?>
+                    <td class="text-end">{{$total_d_charges}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">Tax</td>
-                    <td class="text-end">{{$item->tax_amt}}</td>
+                    <?php
+                    $total_tax_amt=0;
+                    foreach ($orders as $item)
+                    $total_tax_amt+= $item->tax_amt;
+                    ?>
+                    <td class="text-end">{{$total_tax_amt}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">Discount </td>
-                    <td class="text-danger text-end">-0.00</td>
+                    <?php
+                    $total_dis_amt=0;
+                    foreach ($orders as $item)
+                    $total_dis_amt+= $item->dis_amt;
+                    ?>
+                    <td class="text-danger text-end">-{{$total_dis_amt}}</td>
                   </tr>
                   <tr class="fw-bold">
                     <td colspan="2">TOTAL</td>
-                    <td class="text-end">PKR {{$item->sub_total }}</td>
+                    <?php $sum = 0;
+                    foreach ($orders as $item)
+                    $sum+= $item->sub_total;
+                    ?>
+                    <td class="text-end">PKR {{$sum}} </td>
                   </tr>
                 </tfoot>
               </table>
@@ -185,6 +208,9 @@
 <style>
     body{
     background:#eee;
+}
+.text{
+  color: white;
 }
 .card {
     box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);

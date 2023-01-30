@@ -42,11 +42,13 @@
               
           </div>
           @endforeach
-         
+          <form action="discount-price" method="post">
+            @csrf
           <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-            <input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card">
+            <input type="text" class="form-control border-0 gift-card" name="discount_price" placeholder="discount code/gift card" >
             <button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button>
           </div>
+        </form>
           <?php
            $sum =0;
            foreach ($products as $key => $item) {
@@ -58,14 +60,14 @@
           </div>
           <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
             
-            <button class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default" type="button">
+            <button class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default" type=" submit">
               <a href="/buy_now">Proceed to Pay</a></button>
+          
             {{-- <button class="add-to-cart btn btn-default" type="button submit">add to cart</button> --}}
 
           </div>
           
-
-            
+          
           
           {{-- <div class="card-footer">
             <h5>Total Price:{{$item->price * $item->product_qty }}</h5>

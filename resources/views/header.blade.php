@@ -22,12 +22,25 @@
         <ul class="navbar-nav ms-auto ">
           <form action="/search">
             <li class="nav-item">
-              <div class="input-group rounded">
-                <input type="search" autocomplete="off"class="form-control rounded" name="query" placeholder="Search Product" aria-label="Search" aria-describedby="search-addon" />
+              {{-- <div class="input-group rounded">
+                <input type="search" autocomplete="off"class="form-control rounded" name="query" placeholder="Search Product" aria-label="Search" aria-describedby="search-addon" /> 
                <button class="btn btn-primary " type="submit"> <i class="fas fa-search"></i>  </button>
-                  {{-- <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button> --}}
-                {{-- </span> --}}
-              </div>
+                
+              </div> --}}
+
+                  
+                      <div class="input-group">
+                          <input class="form-control border-end-0 border" type="search"  name="query" value="search" id="example-search-input">
+                          <span class="input-group-append">
+                              <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="button submit">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </span>
+                      </div>
+                 
+            
+              
+
             </li>
           </form>
           

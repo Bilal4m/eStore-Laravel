@@ -7,19 +7,21 @@
 
             </div>
         </div>
+        <h2>Approved Orders</h2>
         <div class="row">
-            <h2>Approved Orders</h2>
+           
             @foreach ($orders as $item)
             <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
                 <div class="block-7">
                     <div><img src="{{$item->customer_gallery}}" alt=""></div>
                     <div class="text-center p-4">
                         <span class="excerpt d-block"> {{$item->customer_fname}} {{$item->customer_lname}}</span>
-                        <span class="price"><sup>PKR</sup> <span class="number">{{$item->message}}</span> <sub>/PKR</sub></span>
+                        <span class="price"><sup>PKR</sup> <span class="number">{{$item->customer_tprice}}</span> <sub>/PKR</sub></span>
                         <ul class="pricing-text mb-5">
                             <li><span class="fa fa-check mr-2"></span>Tracking ID:  #{{$item->customer_tid}}</li>
                             <li><span class="fa fa-check mr-2"></span>Phone: {{$item->customer_phone}}</li>
                             <li><span class="fa fa-check mr-2"></span>Status:  {{$item->status}}</li>
+                            <li><span class="fa fa-check mr-2"></span>Message:  {{$item->message}}</li>
                             {{-- <li><span class="fa fa-check mr-2"></span>Address:{{$item->address}}</li> --}}
                         </ul>
                     </div>
@@ -35,7 +37,7 @@
 
 <style>
     body{margin-top:20px;}
-.block-7 {
+   .block-7 {
     border-radius: 4px;
     margin-bottom: 30px;
     padding: 0;

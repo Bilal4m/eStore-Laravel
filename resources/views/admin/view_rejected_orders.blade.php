@@ -4,20 +4,24 @@
 
 <section class="ftco-section bg-light">
     <div class="container">
+        
         <div class="row justify-content-center pb-5 mb-3">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-             
+              
             </div>
+           
         </div>
+        <h2>Rejected Orders</h2>
         <div class="row">
-            <h2>Rejected Orders</h2>
+           
             @foreach ($orders as $item)
             <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
                 <div class="block-7">
+                   
                     <div><img src="{{$item->customer_gallery}}" alt=""></div>
                     <div class="text-center p-4">
                         <span class="excerpt d-block"> {{$item->customer_fname}} {{$item->customer_lname}}</span>
-                        <span class="price"><sup>PKR</sup> <span class="number">{{$item->message}}</span> <sub>/PKR</sub></span>
+                        <span class="price"> <span class="number">{{$item->message}}</span>
                         <ul class="pricing-text mb-5">
                             <li><span class="fa fa-check mr-2"></span>Tracking ID:  #{{$item->customer_tid}}</li>
                             <li><span class="fa fa-check mr-2"></span>Phone: {{$item->customer_phone}}</li>
@@ -77,7 +81,7 @@
     color: #b3b3b3;
 }
 .block-7 .price .number {
-    font-size: 60px;
+    font-size: 15px;
     font-weight: 600;
     color: #000000;
 }

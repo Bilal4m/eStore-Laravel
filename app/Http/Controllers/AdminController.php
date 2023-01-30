@@ -142,6 +142,7 @@ class AdminController extends Controller
     }
 
     function approvedOrders(Request $request){
+   
         $status = new Order_status;
         $status->status = $request->status;
         $status->message = $request->message;
@@ -151,10 +152,12 @@ class AdminController extends Controller
         $status->customer_tid = $request->customer_tid;
         $status->customer_pid = $request->customer_pid;
         $status->customer_uid = $request->customer_uid;
+        $status->customer_tprice = $request->customer_tprice;
         $status->customer_gallery = $request->customer_gallery;
         $status->save();
         alert()->success('Success', 'Order Accepted and message sent to user');
         return redirect('admin/admin');
+       
     }
 
     function rejectedOrders(Request $request){
@@ -168,10 +171,10 @@ class AdminController extends Controller
         $status->customer_tid = $request->customer_tid;
         $status->customer_pid = $request->customer_pid;
         $status->customer_uid = $request->customer_uid;
+        $status->customer_tprice = $request->customer_tprice;
         $status->customer_gallery = $request->customer_gallery;
         $status->save();
         alert()->warning('Alert', 'Order rejected and message sent to user');
-        Order_status::where('status','accepted')->delete();
         return redirect('admin/admin');
     }
   
@@ -186,10 +189,11 @@ class AdminController extends Controller
 
     function ViewRejectedOrders(){
         $r_orders =  DB::table('order_status')
-        
         ->where('status','rejected')
         ->get();
-         return view('admin/view_rejected_orders',['orders'=>$r_orders ]);       
+        return view('admin/view_rejected_orders',['orders'=>$r_orders ]);
+
+            
     }
     
 }

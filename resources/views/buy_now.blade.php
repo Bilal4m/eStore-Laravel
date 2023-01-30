@@ -6,6 +6,7 @@
 $sum =0;
 $dc=0;
 $tax=0;
+$dis=0;
 foreach ($total as $key => $item) {
  $sum += $item->price * $item->product_qty ; 
 }
@@ -19,6 +20,12 @@ if( $sum >=2000){
 }else{
   $tax = $sum*0.5/100;
 }
+if( $sum >=2000){
+  $dis = $sum*2.5/100;
+}else{
+  $dis = $sum*0/100;
+}
+
 ?> 
 <body class="bg-light" cz-shortcut-listen="true">
 
@@ -58,6 +65,14 @@ if( $sum >=2000){
             </div>
             <span class="text-muted">{{$dc}}</span>
           </li>
+
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Discount</h6>
+              {{-- <small class="text-muted">Brief description</small> --}}
+            </div>
+            <span class="text-muted">-{{$dis}}</span>
+          </li>
        
         
          
@@ -65,7 +80,7 @@ if( $sum >=2000){
             <span>Sub Total (PKR)</span>
             @foreach ($total as $item)
             @if ($loop->first)
-            <strong>{{$sum + $dc + $tax}}</strong>
+            <strong>{{$sum + $dc + $tax -$dis }}</strong>
             @endif
             @endforeach
           </li>
@@ -185,9 +200,10 @@ if( $sum >=2000){
           <div class="row">
             <div class="col-md-6 mb-3">
               {{-- <label for="cc-number">Sub Total</label> --}}
-              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$sum + $dc + $tax}}" readonly>
+              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$sum + $dc + $tax - $dis}}" readonly>
               <input type="hidden" class="form-control" name="d_charges" id="cc-number" value="{{ $dc}}" readonly>
               <input type="hidden" class="form-control" name="tax_amt" id="cc-number" value="{{ $tax}}" readonly>
+              <input type="hidden" class="form-control" name="dis_amt" id="cc-number" value="{{ $dis}}" readonly>
               @foreach ($total as $item)
               <input type="hidden" class="form-control" name="product_name" id="cc-number" value="{{$item->name}}" readonly>
               @endforeach
