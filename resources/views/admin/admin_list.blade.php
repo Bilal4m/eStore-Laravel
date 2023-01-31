@@ -1,6 +1,4 @@
 
-  
-
   @include('admin.admin_master')
   @include('admin.modal_style')
 

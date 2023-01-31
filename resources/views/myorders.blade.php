@@ -76,7 +76,7 @@
                       
                     </td>
                     
-                    <td>{{$item->product_qty}}</td>
+                    <td>{{$item->product_qty}} &nbsp; &nbsp; &nbsp;  &nbsp; x </td>
                    
                     <td class="text-end">{{$item->price}}</td>
                 
@@ -86,59 +86,33 @@
                   </tr>
                   @endforeach
                   <tr>
-                    {{-- <td>
-                      <div class="d-flex mb-2">
-                        <div class="flex-shrink-0">
-                          <img src="https://www.bootdey.com/image/280x280/FF69B4/000000" alt="" width="35" class="img-fluid">
-                        </div>
-                        <div class="flex-lg-grow-1 ms-3">
-                          <h6 class="small mb-0"><a href="#" class="text-reset">Smartwatch IP68 Waterproof GPS and Bluetooth Support</a></h6>
-                          <span class="small">Color: White</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td>1</td>
-                    <td class="text-end">$79.99</td> --}}
+                
                   </tr>
                 </tbody>
                 <tfoot>
-                  {{-- <tr>
-                    <td colspan="2">Subtotal</td>
-                    <td class="text-end">$159,98</td>
-                  </tr> --}}
+                  
                   <tr>
                     <td colspan="2">Shipping</td>
-                    <?php $total_d_charges = 0;
-                    foreach ($orders as $item)
-                    $total_d_charges+= $item->d_charges;
-                    ?>
-                    <td class="text-end">{{$total_d_charges}}</td>
+                    
+                    <td class="text-end">{{$item->d_charges}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">Tax</td>
-                    <?php
-                    $total_tax_amt=0;
-                    foreach ($orders as $item)
-                    $total_tax_amt+= $item->tax_amt;
-                    ?>
-                    <td class="text-end">{{$total_tax_amt}}</td>
+                 
+                    <td class="text-end">{{$item->tax_amt}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">Discount </td>
-                    <?php
-                    $total_dis_amt=0;
-                    foreach ($orders as $item)
-                    $total_dis_amt+= $item->dis_amt;
-                    ?>
-                    <td class="text-danger text-end">-{{$total_dis_amt}}</td>
+                  
+                    <td class="text-danger text-end">-{{$item->dis_amt}}</td>
                   </tr>
                   <tr class="fw-bold">
+                   
+                      
+                   
                     <td colspan="2">TOTAL</td>
-                    <?php $sum = 0;
-                    foreach ($orders as $item)
-                    $sum+= $item->sub_total;
-                    ?>
-                    <td class="text-end">PKR {{$sum}} </td>
+                   
+                    <td class="text-end">PKR {{$item->sub_total}}  </td>
                   </tr>
                 </tfoot>
               </table>

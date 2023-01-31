@@ -59,8 +59,13 @@ Route::post("discount-price", [ProductController::class , 'discountPrice']);
 
 
 Route::get("cart_list", [ProductController::class , 'cartList']);
+
+// Route::get("status-pending" , [ProductController::class, 'status']);
+
 Route::get("emptycart", [ProductController::class , 'emptyCart']);
 Route::get("noOrder", [ProductController::class , 'noOrder']);
+
+Route::get("statusPending", [ProductController::class , 'statusPending']);
 Route::get("full_cart", [ProductController::class , 'cartFull']);
 Route::get("remove_cart/{id}", [ProductController::class , 'removeCart']);
 Route::get("buy_now", [ProductController::class , 'buyNow']);
@@ -117,18 +122,20 @@ Route::middleware(['adminRoute'])->group(function () {
          Route::get("admin/delete_user/{id}", [AdminForUserController::class , 'userDelete']);
          Route::get("admin/update_user/{id}", [AdminForUserController::class , 'fecthUserForUpdate']);
          Route::post("admin/update_user", [AdminForUserController::class , 'userDataUpdate']);
- });   
 
  // view pending orders by admin
- Route::get("admin/pending_orders", [AdminController::class , 'pendingOrders']);
- Route::post("admin/order_status", [AdminController::class , 'orderStatus']);
+         Route::get("admin/pending_orders", [AdminController::class , 'pendingOrders']);
+         Route::post("admin/order_status", [AdminController::class , 'orderStatus']);
 
 
- Route::post("admin/rejected_orders", [AdminController::class , 'rejectedOrders']);
- Route::post("admin/approved_orders", [AdminController::class , 'approvedOrders']);
+         Route::post("admin/rejected_orders", [AdminController::class , 'rejectedOrders']);
+         Route::post("admin/approved_orders", [AdminController::class , 'approvedOrders']);
 
- Route::get("admin/view_rejected_orders", [AdminController::class , 'ViewRejectedOrders']);
- Route::get("admin/view_approved_orders", [AdminController::class , 'ViewApprovedOrders']);
+         Route::get("admin/view_rejected_orders", [AdminController::class , 'ViewRejectedOrders']);
+         Route::get("admin/view_approved_orders", [AdminController::class , 'ViewApprovedOrders']);
+ });   
+
+
 
 
 

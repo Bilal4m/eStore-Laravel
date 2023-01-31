@@ -1,6 +1,15 @@
 @extends('master')
 @section('content')
 
+<?php
+use App\Http\Controllers\ProductController;
+
+
+$orderStatus=0;
+if(Session::has('user')){
+$orderStatus = ProductController::myOrdersStatus();
+}
+?>
 
 <h1>Product Details</h1>
 <div class="container">
@@ -74,7 +83,13 @@
                             @endif
 
                             {{-- <input type="hidden" name="product_qty" value={{$product['qty']}}> --}}
+
+                            @if($orderStatus<1 )
                             <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>
+                            @else
+                            <a class="add-to-cart btn btn-default" href="/noOrder">add to cart</a>
+            
+                            @endif
 
                        
                         <button class="add-to-buy btn btn-default" type="button">buy now</button>

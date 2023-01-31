@@ -3,9 +3,11 @@
    use App\Http\Controllers\ProductController;
    $total =0;
    $totalOrders =0;
+   $orderStatus=0;
    if(Session::has('user')){
    $total = ProductController::cartItem();
    $totalOrders = ProductController::myOrdersItem();
+   $orderStatus = ProductController::myOrdersStatus();
    }
   ?>
 
@@ -64,10 +66,12 @@
                <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/logout">Logout</a></li> 
-              @if($totalOrders>0)
+              @if($totalOrders>0 )
               <li><a href="/myorders">My Orders</a></li> 
+              <li><a href="/generate-pdf">View PDF</a></li> 
               @else
               <li><a href="/noOrder">My Orders</a></li> 
+            
               @endif
               {{-- <li><a href="/noOrder">My Orders</a></li>  --}}
 

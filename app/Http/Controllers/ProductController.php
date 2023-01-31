@@ -65,6 +65,10 @@ class ProductController extends Controller
         $userId = session()->get('user')['id'];
         return Order::where('user_id',$userId)->count();
     }
+    static function myOrdersStatus(){
+        $userId = session()->get('user')['id'];
+        return Order::where('user_id',$userId)->count();    }
+
 
     function cartList(){
        
@@ -103,7 +107,11 @@ class ProductController extends Controller
         return redirect('/');
     }
     function noOrder(){
-        alert()->warning('ALERT','You have no order placed yet please place some order');
+        alert()->warning('ALERT',' you have no orders or previous order is not approved yet');
+        return redirect('/');
+    }
+    function status(){
+        alert()->warning('ALERT',' you have no orders');
         return redirect('/');
     }
 
