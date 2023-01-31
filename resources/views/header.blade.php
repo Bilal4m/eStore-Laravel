@@ -69,6 +69,7 @@
               @if($totalOrders>0 )
               <li><a href="/myorders">My Orders</a></li> 
               <li><a href="/generate-pdf">View PDF</a></li> 
+              
               @else
               <li><a href="/noOrder">My Orders</a></li> 
             

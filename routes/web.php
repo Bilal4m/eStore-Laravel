@@ -25,19 +25,8 @@ use App\Http\Controllers\PDFController;
 Route::get('/login', function () {
     return view('login');
 });
-// user logout
-// Route::get('/logout', function () {
-//     Session::forget('user');
-//     return redirect('/');
-// });
-// Route::get('/logout', function () {
-//     if(session()->has('user'))
-//     {
-//         Session::forget('user');
-//         return redirect('/');
-//     }
-//     return redirect('/login');
-// });
+
+
 
 Route::get('/logout' , [UserController::class, 'userLogout']);
 
@@ -65,7 +54,9 @@ Route::get("cart_list", [ProductController::class , 'cartList']);
 Route::get("emptycart", [ProductController::class , 'emptyCart']);
 Route::get("noOrder", [ProductController::class , 'noOrder']);
 
+// Route::view("statusPending", [ProductController::class , 'statusPending']);
 Route::get("statusPending", [ProductController::class , 'statusPending']);
+
 Route::get("full_cart", [ProductController::class , 'cartFull']);
 Route::get("remove_cart/{id}", [ProductController::class , 'removeCart']);
 Route::get("buy_now", [ProductController::class , 'buyNow']);

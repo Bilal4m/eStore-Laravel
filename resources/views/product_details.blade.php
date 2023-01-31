@@ -87,7 +87,7 @@ $orderStatus = ProductController::myOrdersStatus();
                             @if($orderStatus<1 )
                             <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>
                             @else
-                            <a class="add-to-cart btn btn-default" href="/noOrder">add to cart</a>
+                            <a class="add-to-cart btn btn-default" href="/statusPending">add To cart</a>
             
                             @endif
 

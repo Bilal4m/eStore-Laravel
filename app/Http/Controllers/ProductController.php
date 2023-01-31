@@ -107,11 +107,12 @@ class ProductController extends Controller
         return redirect('/');
     }
     function noOrder(){
-        alert()->warning('ALERT',' you have no orders or previous order is not approved yet');
+        alert()->warning('ALERT',' you have no orders');
         return redirect('/');
     }
-    function status(){
-        alert()->warning('ALERT',' you have no orders');
+    function statusPending(){
+       
+        alert()->warning('ALERT','Your Previous Order is not approved yet so please wait to order more');
         return redirect('/');
     }
 
