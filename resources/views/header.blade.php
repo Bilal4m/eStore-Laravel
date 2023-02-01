@@ -93,27 +93,7 @@
           <li class="nav-item">
             <a class="nav-link mx-1 text-uppercase" href="/admin_login"  data-toggle="modal" data-target="#exampleModalCenterAdminLogin" ><i class="fa-solid fa-circle-user me-1"></i>Admin</a>
           </li>
-          @endif
-          {{-- <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Page 1-1</a></li>
-              <li><a href="#">Page 1-2</a></li>
-              <li><a href="#">Page 1-3</a></li>
-            </ul>
-          </li> --}}
-          {{-- <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="register"><i class="fa-solid fa-circle-user me-1"></i> Signup</a>
-          </li> --}}
-          
-          {{-- <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> Login</a>
-          </li> --}}
-          
-
-         
-        
+          @endif  
 
         </ul>
       </div>
@@ -212,7 +192,7 @@
             <form  action="login" method="post">
               @csrf
 		      		<div class="form-group">
-		      			<input type="email" name="user_email" class="form-control rounded-left" placeholder="Email">
+		      			<input type="email" name="user_email" class="form-control rounded-left" placeholder="Email" autocomplete="off">
 		      		</div>
 	            <div class="form-group d-flex">
 	              <input type="password" name="user_password" class="form-control rounded-left" placeholder="Password">
@@ -298,7 +278,7 @@
             <form  action="admin_login" method="post">
               @csrf
 		      		<div class="form-group">
-		      			<input type="email" name="admin_email" class="form-control rounded-left" placeholder="Email">
+		      			<input type="email" name="admin_email" class="form-control rounded-left" placeholder="Email" autocomplete="off">
 		      		</div>
 	            <div class="form-group d-flex">
 	              <input type="password" name="admin_password" class="form-control rounded-left" placeholder="Password">
