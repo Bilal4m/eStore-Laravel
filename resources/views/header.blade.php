@@ -67,11 +67,11 @@
             <ul class="dropdown-menu">
               <li><a href="/logout">Logout</a></li> 
               @if($totalOrders>0 )
-              <li><a href="/myorders">My Orders</a></li> 
+              <li><a href="/myorders">My-Orders</a></li> 
               <li><a href="/generate-pdf">View PDF</a></li> 
               
               @else
-              <li><a href="/noOrder">My Orders</a></li> 
+              <li><a href="/noOrder">My-Orders</a></li> 
             
               @endif
               {{-- <li><a href="/noOrder">My Orders</a></li>  --}}
