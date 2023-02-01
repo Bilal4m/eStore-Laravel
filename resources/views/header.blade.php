@@ -47,7 +47,7 @@
           </form>
           
           <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/">Home</a>
+            <a class="nav-link mx-1 text-uppercase" href="/">Home-1</a>
           </li>
           @if ($total > 0)
           <li class="nav-item">
