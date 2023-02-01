@@ -6,7 +6,7 @@
       <div class="col-md-8">
           <div class="p-2">
               <h4>Shopping cart</h4>
-              <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
+              <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort By:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
           </div>
           @foreach ($products as $item)
               
