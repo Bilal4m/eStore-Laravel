@@ -34,9 +34,10 @@ if( $sum >=2000){
     </div>
 
     <div class="row">
-      <div class="col-md-4 order-md-2 mb-4">
+      <div style="border-radius: 10px" class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Your cart</span>
+          <span style="color:#00cc90; font-weight:bold" class="">Your cart</span>
+          
           {{-- <span class="badge badge-secondary badge-pill">Cart</span> --}}
         </h4>
         <ul class="list-group mb-3">
@@ -44,95 +45,72 @@ if( $sum >=2000){
           @if ($loop->first)
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Total Amount</h6>
+              <h6 style="color:#00cbff; font-weight:bold" class="my-0">Total Amount</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-            <span class="text-muted">{{$sum}}</span>
+            <span style="color:#00cbff; font-weight:bold" class="">{{$sum}}</span>
             @endif
             @endforeach
           </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Tax Amount</h6>
+          <li  class="list-group-item d-flex justify-content-between lh-condensed" >
+            <div >
+              <h6 style="color:#00cbff; font-weight:bold" class="my-0">Tax Amount</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-            <span class="text-muted">{{$tax}}</span>
+            <span style="color:#00cbff; font-weight:bold"  class="">{{$tax}}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Delivery Charges</h6>
+              <h6 style="color:#00cbff; font-weight:bold" class="my-0">Delivery Charges</h6>
               {{-- <small class="text-muted">Brief description</small> --}}
             </div>
-            <span class="text-muted">{{$dc}}</span>
+            <span style="color:#00cbff; font-weight:bold"  class="">{{$dc}}</span>
           </li>
 
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Discount</h6>
-              {{-- <small class="text-muted">Brief description</small> --}}
+              <h6 style="color:red; font-weight:bold" class="my-0">Discount</h6>
             </div>
-            <span class="text-muted">-{{$dis}}</span>
+            <span style="color:red; font-weight:bold" class="">-{{$dis}}</span>
           </li>
        
         
          
           <li class="list-group-item d-flex justify-content-between">
-            <span>Sub Total (PKR)</span>
+            <span style="color:#00cc90; font-weight:bold">Sub Total (PKR)</span>
             @foreach ($total as $item)
             @if ($loop->first)
-            <strong>{{$sum + $dc + $tax -$dis }}</strong>
+            <strong style="color:#00cc90; font-weight:bold">{{$sum + $dc + $tax -$dis }}</strong>
             @endif
             @endforeach
           </li>
         </ul>
-
-        {{-- <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-secondary">Redeem</button>
-            </div>
-          </div>
-        </form> --}}
       </div>
       
       <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Billing address</h4>
+        <h4 style="color:#00cc90; font-weight:bold" class="mb-3">Billing address</h4>
         <form class="needs-validation"  action="orderplace" method="POST" novalidate="">
           @csrf
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" name="first_name" required="">
+              <input type="text" class="form-control" id="firstName" placeholder="" name="first_name" required="" autocomplete="off">
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" name="last_name" required="">
+              <input type="text" class="form-control" id="lastName" placeholder="" name="last_name" required="" autocomplete="off">
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
             </div>
           </div>
-{{-- 
-          <div class="mb-3">
-            <label for="username">Username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">@</span>
-              </div>
-              <input type="text" class="form-control" id="username" placeholder="Username" required="">
-              <div class="invalid-feedback" style="width: 100%;">
-                Your username is required.
-              </div>
-            </div>
-          </div> --}}
 
           <div class="mb-3">
             <label for="email">Email <span class="text-muted">(Optional)</span></label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <input type="email" class="form-control" id="email" placeholder="you@example.com" autocomplete="off">
             <div class="invalid-feedback">
               Please enter a valid email address for shipping updates.
             </div>
@@ -140,7 +118,7 @@ if( $sum >=2000){
 
           <div class="mb-3">
             <label for="address">Address</label>
-            <input type="text" name="address" class="form-control" id="address" placeholder="1234 Main St" required="">
+            <input type="text" name="address" class="form-control" id="address" placeholder="1234 Main St" required="" autocomplete="off">
             <div class="invalid-feedback">
               Please enter your shipping address.
             </div>
@@ -148,7 +126,7 @@ if( $sum >=2000){
 
           <div class="mb-3">
             <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" autocomplete="off">
           </div>
 
           <div class="row">
@@ -177,7 +155,7 @@ if( $sum >=2000){
             </div>
             <div class="col-md-3 mb-3">
               <label for="zip">Phone</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required="" name="phone">
+              <input type="text" class="form-control" id="zip" placeholder="" required="" name="phone" autocomplete="off">
               <div class="invalid-feedback">
                 Phone Number required.
               </div>
@@ -196,7 +174,7 @@ if( $sum >=2000){
           </div>
           <hr class="mb-4">
 
-          <h4 class="mb-3">Payment</h4>
+          <h4 style="color:#00cc90; font-weight:bold" class="mb-3">Payment</h4>
           <div class="row">
             <div class="col-md-6 mb-3">
               {{-- <label for="cc-number">Sub Total</label> --}}
@@ -228,7 +206,7 @@ if( $sum >=2000){
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="cc-name">Name on card</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-name" placeholder="" required="" autocomplete="off">
               <small class="text-muted">Full name as displayed on card</small>
               <div class="invalid-feedback">
                 Name on card is required
@@ -236,7 +214,7 @@ if( $sum >=2000){
             </div>
             <div class="col-md-6 mb-3">
               <label for="cc-number">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-number" placeholder="" required="" autocomplete="off">
               <div class="invalid-feedback">
                 Credit card number is required
               </div>
@@ -260,7 +238,7 @@ if( $sum >=2000){
           </div>
           <hr class="mb-4">
           {{-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> --}}
-          <button class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default" type="submit">Continue to checkout</button>
+          <button  class="btn btn-warning btn-block btn-lg ml-2 pay-button btn btn-default continueBtn" type="submit">Continue to checkout</button>
         </form>
       </div>
     </div>
@@ -311,6 +289,18 @@ if( $sum >=2000){
     background: linear-gradient(to left, #660066 0%, #ff3300 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.continueBtn{
+  background-color: #00cc90;
+  border: none;
+  color: #fff;
+}
+
+.continueBtn:hover{
+  background-color: #85d3bc;
+  border: none;
+  color: #fff;
 }
 </style>
 @endsection

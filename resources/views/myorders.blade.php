@@ -12,7 +12,7 @@
           <a href="#" class="text-muted"></a> 
           @foreach ($orders as $item)
           @if ($loop->first)
-       Order #{{$item->tracking_id}} 
+           <p style="color: #00cc90; font-weight:bold">Order #{{$item->tracking_id}}   </p> 
           @endif
        @endforeach
         </h2>
@@ -33,19 +33,19 @@
                     @endif
                  @endforeach 
                 </span>
-                  <span class="me-3"> @foreach ($orders as $item)
+                  {{-- <span class="me-3"> @foreach ($orders as $item)
                     @if ($loop->first)
                  #{{$item->tracking_id}} 
                     @endif
                  @endforeach
-                 </span>
-                  <span class="me-3">Visa -1234</span>
+                 </span> --}}
+                  <span style="color: #00cc90; font-weight:bold"  class="me-3">Visa -34*****</span>
                   <span class="badge rounded-pill bg-info">SHIPPING</span>
                 </div>
                <div class="row">
                 <div class="col">
                 <div class="d-flex">
-                  <button class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text "><a href="/check_status" ><span class="text">Status</a></button>
+                  <button  class="openBtn btn btn-primary p-0 me-3 d-none d-lg-block btn-icon-text " ><a href="/check_status" ><span class="text">Status</a></button>
                   
                 </div>
               </div>
@@ -69,8 +69,8 @@
                           <img src=" {{$item->gallery}} " alt="" width="35" class="img-fluid">
                         </div>
                         <div class="flex-lg-grow-1 ms-3">
-                          <h6 class="small mb-0"><a href="#" class="text-reset"> {{$item->name}} </a></h6>
-                          <span class="small">Description:  {{$item->description}} </span>
+                          <h6 style="color: #00cc90; font-weight:bold" class="small mb-0"> {{$item->name}} </h6>
+                          <span class="small">Description:  <span style="color: #00cc90; font-weight:bold">{{$item->description}}</span>  </span>
                         </div>
                       </div>
                       
@@ -92,27 +92,27 @@
                 <tfoot>
                   
                   <tr>
-                    <td colspan="2">Shipping</td>
+                    <td style="color: #007bff; font-weight:bold" colspan="2">Shipping</td>
                     
-                    <td class="text-end">{{$item->d_charges}}</td>
+                    <td style="color: #007bff; font-weight:bold">{{$item->d_charges}}</td>
                   </tr>
                   <tr>
-                    <td colspan="2">Tax</td>
+                    <td style="color: #007bff; font-weight:bold" colspan="2">Tax</td>
                  
-                    <td class="text-end">{{$item->tax_amt}}</td>
+                    <td style="color: #007bff; font-weight:bold">{{$item->tax_amt}}</td>
                   </tr>
                   <tr>
-                    <td colspan="2">Discount </td>
+                    <td style="color: red; font-weight:bold" colspan="2">Discount </td>
                   
-                    <td class="text-danger text-end">-{{$item->dis_amt}}</td>
+                    <td style="color: red; font-weight:bold">-{{$item->dis_amt}}</td>
                   </tr>
                   <tr class="fw-bold">
                    
                       
                    
-                    <td colspan="2">TOTAL</td>
+                    <td style="color: #00cc90; font-weight:bold" colspan="2">TOTAL</td>
                    
-                    <td class="text-end">PKR {{$item->sub_total}}  </td>
+                    <td style="color: #00cc90; font-weight:bold">{{$item->sub_total}}<sub>PKR</sub> </td>
                   </tr>
                 </tfoot>
               </table>
@@ -123,14 +123,14 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <h3 class="h6">Payment Method</h3>
+                  <h4 style="color: #00cc90; font-weight:bold" class="h5">Payment Method</h4>
                   <p>{{$item->payment_method}} <br>
-                  Total: PKR {{$item->sub_total}} <span class="badge bg-success rounded-pill">PAID</span></p>
+                  <span style="color:black; font-weight:bold">Total: {{$item->sub_total}}<sub>PKR</sub>  </span> <span class="badge bg-success rounded-pill">PAID</span></p>
                 </div>
                 <div class="col-lg-6">
-                  <h3 class="h6">Billing address</h3>
+                  <h4 style="color: #00cc90; font-weight:bold" class="h5">Billing address</h4>
                   <address>
-                    <strong>{{session('user')['user_name']}}</strong>
+                    <strong style="color: #00cc90; font-weight:bold">{{session('user')['user_name']}}</strong>
                  <br>
                     {{{$item->country}}},<br>
                     {{{$item->state}}},<br>
@@ -153,13 +153,14 @@
           <div class="card mb-4">
             <!-- Shipping information -->
             <div class="card-body">
-              <h3 class="h6">Shipping Information</h3>
+              <h4 style="color: #00cc90; font-weight:bold" class="h6">Shipping Information</h4>
+              
               <strong>Leopard</strong>
               <span><a href="#" class="text-decoration-underline" target="_blank">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
               <hr>
-              <h3 class="h6">Address</h3>
+              <h4 style="color: #00cc90; font-weight:bold" class="h6">Address</h4>
               <address>
-                <strong>{{session('user')['user_name']}}</strong>
+                <strong style="color: #00cc90; font-weight:bold">{{session('user')['user_name']}}</strong>
              <br>
                 {{{$item->country}}},<br>
                 {{{$item->state}}},<br>
@@ -181,7 +182,7 @@
      
 <style>
     body{
-    background:#eee;
+    background:#f8f9fa;
 }
 .text{
   color: white;
@@ -205,8 +206,21 @@
     color: inherit!important;
 }
 a {
-    color: #5465ff;
+    color: #007bff;
     text-decoration: none;
+}
+
+.openBtn {
+  background-color: #00cc90;
+  border: none;
+  text-decoration: none;
+}
+
+.openBtn a:hover{
+  background-color: #89c9b6;
+  border: none;
+  text-decoration: none;
+  
 }
 </style>
 

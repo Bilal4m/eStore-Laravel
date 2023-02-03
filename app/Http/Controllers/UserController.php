@@ -18,8 +18,7 @@ class UserController extends Controller
         $user = new User;
         $user->user_name = $request->user_name;
         $user->user_email = $request->user_email;
-        // $user->user_password = Hash::make($request->user_password);
-        $user->user_password = $request->user_password;
+        $user->user_password = Hash::make($request->user_password);
         $user->save();
         alert()->success('Success','User registered successfully');
         return redirect('/');

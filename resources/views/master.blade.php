@@ -43,307 +43,7 @@
    
 </body>
 
-<style>
-    .custom-login{
-        height: 500px;
-        padding-top:100px; 
-      }
 
-
-      @import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.bg-img {
-    /* background: url(https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg); */
-    background: url(https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg);
-    height: 150vh;
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-img::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    height: 150%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 999;
-    width: 370px;
-    text-align: center;
-    padding: 60px 32px;
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
-}
-
-.content header {
-    color: #fff;
-    font-size: 33px;
-    font-weight: 600;
-    margin: 0 0 35px 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-.field {
-    position: relative;
-    height: 45px;
-    width: 100%;
-    display: flex;
-    background: rgba(255, 255, 255, 0.94);
-}
-
-
-
-.field span {
-    color: #222;
-    width: 40px;
-    line-height: 45px;
-    padding: 0 10px;
-}
-.field input {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #222;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-
-.space {
-    margin-top: 16px;
-}
-.pass {
-    text-align: left;
-    margin: 10px 0;
-}
-
-.pass a {
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-}
-
-.pass:hover a {
-    text-decoration: underline;
-}
-
-button[type="submit"] {
-    /* background: linear-gradient(to right, #0000ff 0%, #6666ff 100%);
-    border: 1px solid linear-gradient(to right, #0000ff 0%, #6666ff 100%);
-    ; */
-
-
-    background: #fb8691;
-    /* border-radius: 2px solid white; */
-    color: #fff;
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    border: none;
-}
-
-button[type="submit"]:hover {
-    background: linear-gradient(to left, #fb8691 0%, #f1b1b7 100%);
-    color:white;
-}
-
-.login {
-    color: #fff;
-    margin: 20px 0;
-    font-family: 'Poppins', sans-serif;
-}
-.link {
-    display: flex;
-    cursor: pointer;
-    color: #fff;
-    margin: 0 0 20px 0;
-}
-
-.facebook,
-.instagram {
-    width: 100%;
-    height: 45px;
-    line-height: 45px;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-.facebook {
-    margin-left: 0px;
-    background: #4267B2;
-    border: 1px solid #3e61a8;
-}
-
-.instagram {
-    background: linear-gradient(to right, #9900cc 0%, #ff3399 100%);
-    border: 1px solid linear-gradient(to right, #9900cc 0%, #ff3399 100%);
-}
-
-.facebook:hover {
-    background: #3e61a8;
-}
-
-.instagram:hover {
-    background: linear-gradient(to left, #9900cc 0%, #ff3399 100%);
-}
-.link i {
-    font-size: 17px;
-}
-
-.link span {
-    font-size: 15px;
-    margin-left: 8px;
-
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-}
-
-.signup {
-    color: #fff;
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.signup a {
-    color: #37ff00;
-    text-decoration: none;
-}
-
-.signup a:hover {
-    text-decoration: underline;
-}
-   
-
-
-/* css for user data form */
-
-.register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 3%;
-    padding: 3%;
-}
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
-}
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8f9fa;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
-}
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
-}
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
-}
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
-}
-.btnRegister{
-    float: right;
-    margin-top: 10%;
-    border: 1px;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #0062cc;
-    color: #fff;
-    font-weight: 600;
-    width: 50%;
-    cursor: pointer;
-}
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #0062cc;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
-}
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-}
-.register .nav-tabs .nav-link:hover{
-    border: none;
-}
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
-    color: #495057;
-}
-
-.rem{
-    color: white;
-}
-
-
-img.slider-img{
-height: 500px !important;
-margin-left: 20px;
-margin-right: 40px;
-}
-</style>
 
 
 {{-- // css for product details section --}}
@@ -432,7 +132,9 @@ img {
 
 .product-title, .price, .sizes, .colors {
   text-transform: UPPERCASE;
-  font-weight: bold; }
+  font-weight: bold; 
+  color:#00cc90;
+}
 
 .checked, .price span {
   color: #ff9f1a; }
@@ -459,7 +161,7 @@ img {
     margin-left: 20px; }
 
 .add-to-cart, .like {
-  background: #ff9f1a;
+  background: #00cc90;
   padding: 1.2em 1.5em;
   border: none;
   text-transform: UPPERCASE;
@@ -468,11 +170,11 @@ img {
   -webkit-transition: background .3s ease;
           transition: background .3s ease; }
   .add-to-cart:hover, .like:hover {
-    background: #b36800;
+    background: #79b6a4;
     color: #fff; }
 
     .add-to-buy, .like {
-  background: #1b920b;
+  background: #ff9f1a;
   padding: 1.2em 1.5em;
   border: none;
   text-transform: UPPERCASE;
@@ -481,7 +183,7 @@ img {
   -webkit-transition: background .3s ease;
           transition: background .3s ease; }
   .add-to-buy:hover, .like:hover {
-    background: #7fd377;
+    background: #b36800;
     color: #fff; }
 
     .add-to-back, .like {

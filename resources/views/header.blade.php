@@ -11,9 +11,18 @@
    }
   ?>
 
+<head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
 
 {{-- // navbar section --}}
-<nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+{{-- <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="/"><i class="fa-solid fa-shop me-2"></i> <strong>E-STORE</strong></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,14 +32,7 @@
       
         <ul class="navbar-nav ms-auto ">
           <form action="/search">
-            <li class="nav-item">
-              {{-- <div class="input-group rounded">
-                <input type="search" autocomplete="off"class="form-control rounded" name="query" placeholder="Search Product" aria-label="Search" aria-describedby="search-addon" /> 
-               <button class="btn btn-primary " type="submit"> <i class="fas fa-search"></i>  </button>
-                
-              </div> --}}
-
-                  
+            <li class="nav-item">     
                       <div class="input-group">
                           <input class="form-control border-end-0 border" type="search"  name="query" value="search" id="example-search-input">
                           <span class="input-group-append">
@@ -39,10 +41,6 @@
                               </button>
                           </span>
                       </div>
-                 
-            
-              
-
             </li>
           </form>
           
@@ -74,18 +72,14 @@
               <li><a href="/noOrder">My-Orders</a></li> 
             
               @endif
-              {{-- <li><a href="/noOrder">My Orders</a></li>  --}}
 
             </ul>
       
           </li>
           
-          {{-- <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="admin_login" target="_blank"><i class="fa-solid fa-circle-user me-1"></i> My Orders</a>
-          </li> --}}
+    
           @else 
           <li class="nav-item">
-            {{-- <a class="nav-link mx-1 text-uppercase" href="/login"> <i class="fa-solid fa-circle-user me-1"></i>Login</a> --}}
             <a class="nav-link mx-1 text-uppercase" href="/login"  data-toggle="modal" data-target="#exampleModalCenterUserLogin" ><i class="fa-solid fa-circle-user me-1"></i>Login</a>
           </li>
           
@@ -98,8 +92,65 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> --}}
+
+
+  {{-- new nav --}}
+  <nav>
+    <div class="menu-icon">
+       <span class="fas fa-bars"></span>
+    </div>
+    <div class="logo">
+       <a class="navbar-brand" href="/"><i class="fa-solid fa-shop me-2"></i> <strong>E-STORE</strong></a>
+   </div>
+
+   <div class="search-icon">
+       <span class="fas fa-search"></span>
+    </div>
+    <div class="cancel-icon">
+       <span class="fas fa-times"></span>
+    </div>
+    <form action="/search">
+
+       <input type="search"  name="query" value="search" class="search-data" placeholder="Search" required>
+       <button type="submit mySearchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
   
+    <div class="nav-items">
+       <li><a href="/">Home</a></li>
+       @if ($total > 0)
+       <li><a href="/cart_list"><i class="fa-solid fa-cart-shopping me-1"></i>Cart({{$total}})</a></li>
+       @else
+       <li><a href="/emptycart"><i class="fa-solid fa-cart-shopping me-1"></i>Cart</a></li>
+       @endif
+
+       @if (Session::has('user')) 
+      
+       <li  class="">
+           <a  onclick="myFunction()" class="dropbtn mybtn"> {{session('user')['user_name']}} <i class="fa-solid fa-caret-down"></i>  <span class="caret"></span> </a>
+                 <div id="myDropdown" class="dropdown-content">
+                 
+
+                 <a href="/logout">Logout</a>
+
+                 @if($totalOrders>0 )
+                 <a href="/myorders">My-Orders</a> 
+                 <a href="/generate-pdf">View PDF</a> 
+                 @else
+                 <a href="/noOrder">My-Orders</a>
+                 @endif
+               </div>  
+       </li>
+       @else 
+       <li><a href="/login" data-toggle="modal" data-target="#exampleModalCenterUserLogin">Login</a></li>
+
+       <li><a href="/admin_login" data-toggle="modal" data-target="#exampleModalCenterAdminLogin">Admin</a></li>
+       @endif 
+
+    </div>
+
+   
+ </nav>
  
 
   
@@ -304,8 +355,61 @@
 		  </div>
 		</div>
 
-  
+    <script>
+      const menuBtn = document.querySelector(".menu-icon span");
+      const searchBtn = document.querySelector(".search-icon");
+      const cancelBtn = document.querySelector(".cancel-icon");
+      const items = document.querySelector(".nav-items");
+      const form = document.querySelector("form");
+      menuBtn.onclick = ()=>{
+        items.classList.add("active");
+        menuBtn.classList.add("hide");
+        searchBtn.classList.add("hide");
+        cancelBtn.classList.add("show");
+      }
+      cancelBtn.onclick = ()=>{
+        items.classList.remove("active");
+        menuBtn.classList.remove("hide");
+        searchBtn.classList.remove("hide");
+        cancelBtn.classList.remove("show");
+        form.classList.remove("active");
+        cancelBtn.style.color = "#ff3d00";
+      }
+      searchBtn.onclick = ()=>{
+        form.classList.add("active");
+        searchBtn.classList.add("hide");
+        cancelBtn.classList.add("show");
+      }
+   </script>
+
+<script>
+  /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+if (!event.target.matches('.dropbtn')) {
+var dropdowns = document.getElementsByClassName("dropdown-content");
+var i;
+for (i = 0; i < dropdowns.length; i++) {
+var openDropdown = dropdowns[i];
+if (openDropdown.classList.contains('show')) {
+  openDropdown.classList.remove('show');
+}
+}
+}
+}
+</script>
 <style>
+
+  #myDropdown{
+    background-color: 000; 
+   border-radius: 10px 10px 10px 10px;
+  }
+
   .modal-open {
   overflow: hidden; }
   .modal-open .modal {
@@ -539,7 +643,7 @@
 
 </style>
    
-  <style>
+  {{-- <style>
 
     a{
       color: #fb8691;
@@ -645,10 +749,333 @@ ul li ul li {
   }
 
 
+  
+
 
   /* login section css */
 
   
 
   </style>
- 
+  --}}
+
+
+  <style>
+    /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap'); */
+
+  
+  @import url('https://fonts.googleapis.com/css2?family=Sono:wght@400;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Sono', sans-serif;
+}
+
+
+
+
+
+/* Dropdown Button */
+.dropbtn {
+
+  
+  padding: 1px;
+  
+  border: none;
+  cursor: pointer;
+
+  color: rgb(90, 80, 80);
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #eeeeee;
+  text-decoration: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+body{
+  background: #f2f2f2;
+}
+nav{
+  background: #eeeeee;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 100px;
+}
+nav .logo{
+  color: #007bff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+nav .nav-items{
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 100px;
+  justify-content: right;
+}
+nav .nav-items li{
+  list-style: none;
+  padding: 0 15px;
+}
+nav .nav-items li a{
+  color: #00cc90;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+nav .nav-items li a:hover{
+  color: #00cc50;
+}
+nav form{
+  display: flex;
+  height: 40px;
+  padding: 2px;
+  margin-left: 80px;
+  background: #c4c4c4;
+  min-width: 18%!important;
+  border-radius: 2px;
+  border: 1px solid rgba(155,155,155,0.2);
+}
+nav form .search-data{
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  color: rgb(10, 10, 10);
+  font-size: 17px;
+  border: none;
+  font-weight: 500;
+  background: none;
+}
+nav form button{
+  padding: 0 15px;
+  color: #fff;
+  font-size: 17px;
+  background: #37641c;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+nav form button:hover{
+  background: #66ce6f;
+}
+nav .menu-icon,
+nav .cancel-icon,
+nav .search-icon{
+  width: 40px;
+  text-align: center;
+  margin: 0 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+nav .menu-icon span,
+nav .cancel-icon,
+nav .search-icon{
+  display: none;
+}
+@media (max-width: 1245px) {
+  nav{
+    padding: 0 50px;
+  }
+}
+@media (max-width: 1140px){
+  nav{
+    padding: 0px;
+  }
+  nav .logo{
+    flex: 2;
+    text-align: center;
+  }
+  nav .nav-items{
+    position: fixed;
+    z-index: 99;
+    top: 70px;
+    width: 100%;
+    left: -100%;
+    height: 100%;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    background: #14181f;
+    display: inline-block;
+    transition: left 0.3s ease;
+  }
+  nav .nav-items.active{
+    left: 0px;
+  }
+  nav .nav-items li{
+    line-height: 40px;
+    margin: 30px 0;
+  }
+  nav .nav-items li a{
+    font-size: 20px;
+    color: #00cc90;
+  }
+  nav form{
+    position: absolute;
+    top: 80px;
+    right: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: top 0.3s ease, opacity 0.1s ease;
+  }
+  nav form.active{
+    top: 95px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav form:before{
+    position: absolute;
+    content: "";
+    top: -13px;
+    right: 0px;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    border: 10px solid transparent;
+    border-bottom-color: #1e232b;
+    margin: -20px 0 0;
+  }
+  nav form:after{
+    position: absolute;
+    content: '';
+    height: 60px;
+    padding: 2px;
+    background: #1e232b;
+    border-radius: 2px;
+    min-width: calc(100% + 20px);
+    z-index: -2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  nav .menu-icon{
+    display: block;
+    color: #00cc90;
+  }
+  nav .search-icon,
+  nav .menu-icon span{
+    display: block;
+    color: #00cc90;
+  }
+  nav .menu-icon span.hide,
+  nav .search-icon.hide{
+    display: none;
+  }
+  nav .cancel-icon.show{
+    display: block;
+  }
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.content header{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .text{
+  font-size: 30px;
+  font-weight: 700;
+}
+.space{
+  margin: 10px 0;
+}
+nav .logo.space{
+  color: rgb(238, 229, 229);
+  padding: 0 5px 0 0;
+}
+@media (max-width: 980px){
+  nav .menu-icon,
+  nav .cancel-icon,
+  nav .search-icon{
+    margin: 0 20px;
+  }
+  nav form{
+    right: 30px;
+  }
+}
+@media (max-width: 350px){
+  nav .menu-icon,
+  nav .cancel-icon,
+  nav .search-icon{
+    margin: 0 10px;
+    font-size: 16px;
+  }
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content header{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .text{
+  font-size: 30px;
+  font-weight: 700;
+}
+.content .space{
+  margin: 10px 0;
+}
+
+.mySearchBtn{
+  color: #00cc90;
+}
+
+.mySearchBtn:hover{
+  color: #00cc90;
+}
+</style>
