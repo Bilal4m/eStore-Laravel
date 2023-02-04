@@ -249,7 +249,7 @@
 	              <input type="password" name="user_password" class="form-control rounded-left" placeholder="Password">
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+	            	<button style="background-color: #00cc90; border:none; text-align:center;" type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
 	            </div>
 	            <div class="form-group d-md-flex">
 	            	<div class="form-check w-50">
@@ -294,7 +294,7 @@
 	              <input type="password" name="user_password" class="form-control rounded-left" placeholder="Password">
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>
+	            	<button style="background-color: #00cc90; border:none; text-align:center;" type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>
 	            </div>
 	            <div class="form-group d-md-flex">
 	            	<div class="form-check w-50">
@@ -325,7 +325,7 @@
 		      	<div class="icon d-flex align-items-center justify-content-center">
 		      		<span class="ion-ios-person"><i class="fa-solid fa-user"></i></span>
 		      	</div>
-		      	<h3 class="text-center mb-4">Admin Sign In</h3>
+		      	<h3   class="text-center mb-4">Admin Sign In</h3>
             <form  action="admin_login" method="post">
               @csrf
 		      		<div class="form-group">
@@ -335,7 +335,7 @@
 	              <input type="password" name="admin_password" class="form-control rounded-left" placeholder="Password">
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+	            	<button style="background-color: #00cc90; border:none; text-align:center;" type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
 	            </div>
 	            <div class="form-group d-md-flex">
 	            	<div class="form-check w-50">
@@ -404,7 +404,14 @@ if (openDropdown.classList.contains('show')) {
 }
 </script>
 <style>
+input[type=submit]{
+  background-color: #00cc90;
+}
 
+h3{
+  color: #00cc90;
+  font-weight: bold;
+}
   #myDropdown{
     background-color: 000; 
    border-radius: 10px 10px 10px 10px;
@@ -630,135 +637,20 @@ if (openDropdown.classList.contains('show')) {
     .modal-content .modal-body .icon {
       width: 80px;
       height: 80px;
-      border: 1px solid #fb8691;
+      border: 1px solid #00cc90;
       border-radius: 50%;
       font-size: 30px;
       margin: 0 auto;
       margin-bottom: 10px; }
       .modal-content .modal-body .icon span {
-        color: #fb8691; }
+        color: #00cc90; }
      .modal-content .modal-footer {
     border: none;
     background: #f8f8f8; }
 
 </style>
    
-  {{-- <style>
-
-    a{
-      color: #fb8691;
-    }
-    a:active {
-  text-decoration: none;
-  color: #fb8691;
-}
-  a:hover{
-    color: #fb8691;
-    text-decoration: none;
-  }
-
-nav {
-  font-family: monospace;
-}
-
-ul {
-  background: rgb(235, 230, 226);
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-li {
-  color: rgb(24, 22, 22);
-  background: #eeeeee;
-  display: block;
-  float: left;
-  padding: .5rem;
-  position: relative;
-  text-decoration: none;
-  transition-duration: 0.5s;
-}
-  
-li a {
-  color: rgb(90, 81, 81);
-}
-
-li:hover,
-li:focus-within {
-  background: #c7bfbf;
-  cursor: pointer;
-}
-
-li:focus-within a {
-  outline: none;
-}
-
-ul li ul {
-  background: rgb(61, 41, 4);
-  visibility: hidden;
-  opacity: 0;
-  min-width: 5rem;
-  position: absolute;
-  transition: all 0.5s ease;
-  margin-top: 1rem;
-  left: 0;
-  display: none;
-}
-
-ul li:hover > ul,
-ul li:focus-within > ul,
-ul li ul:hover,
-ul li ul:focus {
-   visibility: visible;
-   opacity: 1;
-   display: block;
-}
-
-ul li ul li {
-  clear: both;
-  width: 100%;
-}
-
-    /* navbar section */
-    .bg-white {
-    background-color: #eee!important;
-}
-    .navbar-nav{
-      margin-left: -10px;
-      margin-right: -70px;
-    }
-    .navbar-brand{
-     
-      margin-left: -80px;
-    }
-        a {
-    font-size:14px;
-    font-weight:700
-  }
-  .superNav {
-    font-size:13px;
-  }
-  .form-control {
-    outline:none !important;
-    box-shadow: none !important;
-  }
-  @media screen and (max-width:540px){
-    .centerOnMobile {
-      text-align:center
-    }
-  }
-
-
-  
-
-
-  /* login section css */
-
-  
-
-  </style>
-  --}}
-
+ 
 
   <style>
     /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap'); */
