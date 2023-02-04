@@ -26,6 +26,11 @@ class ProductController extends Controller
          $data = Product::find($id);
          return view("product_details" , ['product'=>$data]);
      }
+
+    //  function detail()
+    //  {
+    //     echo public_path();
+    //  }
  
      //search product
      function search(Request $request)

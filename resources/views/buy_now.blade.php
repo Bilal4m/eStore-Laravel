@@ -178,7 +178,7 @@ if( $sum >=2000){
           <div class="row">
             <div class="col-md-6 mb-3">
               {{-- <label for="cc-number">Sub Total</label> --}}
-              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$sum + $dc + $tax - $dis}}" readonly>
+              <input type="hidden" class="form-control" name="sub_total" id="cc-number" value="{{$sum }}" readonly>
               <input type="hidden" class="form-control" name="d_charges" id="cc-number" value="{{ $dc}}" readonly>
               <input type="hidden" class="form-control" name="tax_amt" id="cc-number" value="{{ $tax}}" readonly>
               <input type="hidden" class="form-control" name="dis_amt" id="cc-number" value="{{ $dis}}" readonly>

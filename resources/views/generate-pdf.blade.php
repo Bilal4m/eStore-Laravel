@@ -81,23 +81,47 @@
                                             
                                          
                                            <td colspan="2">Shipping:</td>
-                                           
-                                            <td class="text-end">{{$item->d_charges}}</td>
+                                           <?php 
+                                           $totalShip=0;
+                                           foreach ($orders as $item) {  
+                                           $totalShip+= $item->d_charges;
+                                           }
+                                        
+                                           ?>
+                                            <td class="text-end">{{$totalShip}}</td>
                                           </tr>
                                           <tr>
                                             <td colspan="2">Tax:</td>
-                                            
-                                            <td class="text-end">{{$item->tax_amt}}</td>
+                                            <?php 
+                                            $totalTax=0;
+                                            foreach ($orders as $item) {  
+                                            $totalTax+= $item->tax_amt;
+                                            }
+                                         
+                                            ?>
+                                            <td class="text-end">{{$totalTax}}</td>
                                           </tr>
                                           <tr>
                                             <td colspan="2">Discount: </td>
-                                           
-                                            <td style="color: red" class="text-danger text-end">-{{$item->dis_amt}}</td>
+                                            <?php 
+                                           $totalDis=0;
+                                           foreach ($orders as $item) {  
+                                           $totalDis+= $item->dis_amt;
+                                           }
+                 
+                                           ?>
+                                            <td style="color: red" class="text-danger text-end">-{{$totalDis}}</td>
                                           </tr>
                                           <tr class="fw-bold">
                                             <td colspan="2"><strong>TOTAL: </strong></td>
-                                            
-                                            <td class="text-end"><strong>{{$item->sub_total}}</strong><sub>PKR</sub>  </td>
+                                            <?php 
+                                            $sum=0;
+                                            foreach ($orders as $item) {  
+                                            $sum+= $item->sub_total;
+                                            }
+                                         
+                                            ?>
+                                            <td class="text-end"><strong>{{$sum + $totalTax + $totalShip - $totalDis}}</strong><sub>PKR</sub>  </td>
                                           </tr> 
                                           <hr>
                                     </table>

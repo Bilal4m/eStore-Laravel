@@ -9,7 +9,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Order_status;
+use App\Models\Order_Status;
 use App\Models\Order_approved;
 use App\Models\Order_rejected;
 use Illuminate\Support\Facades\DB;
@@ -143,7 +143,7 @@ class AdminController extends Controller
 
     function approvedOrders(Request $request){
    
-        $status = new Order_status;
+        $status = new Order_Status;
         $status->status = $request->status;
         $status->message = $request->message;
         $status->customer_fname = $request->customer_fname;
@@ -162,7 +162,7 @@ class AdminController extends Controller
 
     function rejectedOrders(Request $request){
        
-        $status = new Order_status;
+        $status = new Order_Status;
         $status->status = $request->status;
         $status->message = $request->message;
         $status->customer_fname = $request->customer_fname;

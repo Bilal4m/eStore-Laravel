@@ -958,11 +958,13 @@ nav .search-icon{
     opacity: 0;
     pointer-events: none;
     transition: top 0.3s ease, opacity 0.1s ease;
+
   }
   nav form.active{
     top: 95px;
     opacity: 1;
     pointer-events: auto;
+ 
   }
   nav form:before{
     position: absolute;

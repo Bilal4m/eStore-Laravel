@@ -98,12 +98,12 @@ $orderStatus = ProductController::myOrdersStatus();
 
                             {{-- <input type="hidden" name="product_qty" value={{$product['qty']}}> --}}
                            
-                            @if($orderStatus<1 )
+                            {{-- @if($orderStatus<1 ) --}}
                             <button class="add-to-cart btn btn-default" type="button submit">add to cart</button>
-                            @else
-                            <a class="add-to-cart btn btn-default" href="/statusPending">add To cart</a>
+                            {{-- @else --}}
+                            {{-- <a class="add-to-cart btn btn-default" href="/statusPending">add To cart</a> --}}
             
-                            @endif
+                            {{-- @endif --}}
 
                        
                         {{-- <button class="add-to-buy btn btn-default" type="button">buy now</button> --}}

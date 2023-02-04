@@ -93,26 +93,50 @@
                   
                   <tr>
                     <td style="color: #007bff; font-weight:bold" colspan="2">Shipping</td>
-                    
-                    <td style="color: #007bff; font-weight:bold">{{$item->d_charges}}</td>
+                    <?php 
+                    $totalShip=0;
+                    foreach ($orders as $item) {  
+                    $totalShip+= $item->d_charges;
+                    }
+                 
+                    ?>
+                    <td style="color: #007bff; font-weight:bold">{{$totalShip}}</td>
                   </tr>
                   <tr>
                     <td style="color: #007bff; font-weight:bold" colspan="2">Tax</td>
+                    <?php 
+                    $totalTax=0;
+                    foreach ($orders as $item) {  
+                    $totalTax+= $item->tax_amt;
+                    }
                  
-                    <td style="color: #007bff; font-weight:bold">{{$item->tax_amt}}</td>
+                    ?>
+                    <td style="color: #007bff; font-weight:bold">{{$totalTax}}</td>
                   </tr>
                   <tr>
                     <td style="color: red; font-weight:bold" colspan="2">Discount </td>
-                  
-                    <td style="color: red; font-weight:bold">-{{$item->dis_amt}}</td>
+                    <?php 
+                    $totalDis=0;
+                    foreach ($orders as $item) {  
+                    $totalDis+= $item->dis_amt;
+                    }
+                 
+                    ?>
+                    <td style="color: red; font-weight:bold">-{{$totalDis}}</td>
                   </tr>
                   <tr class="fw-bold">
                    
                       
                    
                     <td style="color: #00cc90; font-weight:bold" colspan="2">TOTAL</td>
-                   
-                    <td style="color: #00cc90; font-weight:bold">{{$item->sub_total}}<sub>PKR</sub> </td>
+                    <?php 
+                    $sum=0;
+                    foreach ($orders as $item) {  
+                    $sum+= $item->sub_total;
+                    }
+                 
+                    ?>
+                    <td style="color: #00cc90; font-weight:bold">{{$sum + $totalTax + $totalShip - $totalDis }}<sub>PKR</sub> </td>
                   </tr>
                 </tfoot>
               </table>
@@ -125,7 +149,7 @@
                 <div class="col-lg-6">
                   <h4 style="color: #00cc90; font-weight:bold" class="h5">Payment Method</h4>
                   <p>{{$item->payment_method}} <br>
-                  <span style="color:black; font-weight:bold">Total: {{$item->sub_total}}<sub>PKR</sub>  </span> <span class="badge bg-success rounded-pill">PAID</span></p>
+                  <span style="color:black; font-weight:bold">Total: {{$sum + $totalTax + $totalShip - $totalDis}}<sub>PKR</sub>  </span> <span class="badge bg-success rounded-pill">PAID</span></p>
                 </div>
                 <div class="col-lg-6">
                   <h4 style="color: #00cc90; font-weight:bold" class="h5">Billing address</h4>
