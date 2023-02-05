@@ -5,7 +5,7 @@
  
 
 
- <div class="col-lg-12 col-md-2 main-div">
+ <div class="col-12 col-lg-8">
 <nav aria-label="breadcrumb">
   <ol class="col-lg-10 col-md-2 grid-margin breadcrumb">
     <li class="breadcrumb-item"><a href="/admin/admin">Dashboard</a></li>
@@ -19,7 +19,7 @@
   <div class="card">
     <div class="card-body">
 {{-- <h2 class="mb-4">Admin Settings</h2> --}}
-<table class="table table-hover">
+<table class="table table-hover table-responsive">
   <thead>
     <tr>
       {{-- <th scope="col">#</th> --}}
@@ -57,7 +57,13 @@
 
 
 
-
+<script>
+  $(document).ready(function() {
+          $('#example').DataTable( {
+              responsive: true,
+          } );
+      } );
+</script>
 
 
 

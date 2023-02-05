@@ -10,11 +10,14 @@ class UserController extends Controller
 {
     // register user
     function register(Request $request){
+        $userCheck = User::where('user_email',$request->user_email)->first();
+
         $request->validate([
             'user_name'=>'required',
             'user_email'=>'required|email',
             'user_password'=>'required'
         ]);
+       if($userCheck === null){
         $user = new User;
         $user->user_name = $request->user_name;
         $user->user_email = $request->user_email;
@@ -22,7 +25,20 @@ class UserController extends Controller
         $user->save();
         alert()->success('Success','User registered successfully');
         return redirect('/');
+  
+       }else{
+
+             
+        alert()->error('Registration failed','email already registered');
+        return redirect('/');
+       
+        
+      
+
+        
+       
     }
+}
 
 
     // login user
