@@ -285,10 +285,10 @@
 		      	<form  action="register" method="post">
               @csrf
               <div class="form-group">
-		      			<input type="text" name="user_name" class="form-control rounded-left" placeholder="Username">
+		      			<input type="text" name="user_name" class="form-control rounded-left" placeholder="Username" autocomplete="off">
 		      		</div>
 		      		<div class="form-group">
-		      			<input type="text" name="user_email" class="form-control rounded-left" placeholder="Email">
+		      			<input type="text" name="user_email" class="form-control rounded-left" placeholder="Email" autocomplete="off">
 		      		</div>
 	            <div class="form-group d-flex">
 	              <input type="password" name="user_password" class="form-control rounded-left" placeholder="Password">
