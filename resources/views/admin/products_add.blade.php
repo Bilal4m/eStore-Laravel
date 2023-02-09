@@ -110,22 +110,22 @@
     <form class="forms-sample" action="products_add" method="POST">
       @csrf
       <div class="form-group">
-        <input type="text" name="name" class="form-control" placeholder="Name">
+        <input type="text" name="name" class="form-control" placeholder="Name" required>
       </div>
       <div class="form-group">
-        <input type="text" name="price" class="form-control" placeholder="Price">
+        <input type="text" name="price" class="form-control" placeholder="Price" required>
       </div>
       <div class="form-group">
-        <input type="text" name="category" class="form-control" placeholder="Category">
+        <input type="text" name="category" class="form-control" placeholder="Category" required>
       </div>
       <div class="form-group">
-        <input type="text" name="gallery" class="form-control" placeholder="Pic (url)">
+        <input type="url" name="gallery" class="form-control" placeholder="Pic (url)" required>
       </div>
       <div class="form-group">
-        <input type="text" name="description" class="form-control" placeholder="Description">
+        <input type="text" name="description" class="form-control" placeholder="Description" required>
       </div>
       <div class="form-group">
-        <input type="text" name="qty" class="form-control" placeholder="Qty">
+        <input type="text" name="qty" class="form-control" placeholder="Qty" required> 
       </div>
       <div class="form-group">
         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Add Product</button>

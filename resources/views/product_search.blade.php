@@ -3,7 +3,7 @@
 
 <div class="container">
     <br>
-    <h4>Searched Product  </h2>
+    <h4 style="color: #00cc90; font-weight:bold">Searched Product  </h2>
 	<br>
 	<div class="row" id="ads">
     <!-- Category Card -->

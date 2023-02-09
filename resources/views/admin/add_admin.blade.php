@@ -11,13 +11,13 @@
       <form class="forms-sample" action="add_admin" method="POST">
         @csrf
         <div class="form-group">
-          <input type="text" name="admin_name" class="form-control" placeholder="Name">
+          <input type="text" name="admin_name" class="form-control" placeholder="Name" required>
         </div>
         <div class="form-group">
-          <input type="email" name="admin_email" class="form-control" placeholder="Email">
+          <input type="email" name="admin_email" class="form-control" placeholder="Email" required>
         </div>
         <div class="form-group">
-          <input type="password" name="admin_password" class="form-control" placeholder="Password">
+          <input type="password" name="admin_password" class="form-control" placeholder="Password" required>
         </div>
       
         <div class="form-group">

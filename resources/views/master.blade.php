@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Onlie Shopping Store ">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Laravel, Online Store, Laravel Online Store">
+    <meta name="author" content="Bilal Rasheed">
+
+    <meta property = "og:title" content="Laravel Online Store">
+    <meta property = "og:type" content="website">
+    <meta property = "og:url" content="https://e-store-app.herokuapp.com/">
+    <meta property = "og:description" content="Onlie Shopping Store">
+    <meta property = "og:site_name" content="E-Store">
+    
+    <meta http-equiv="refresh" content="60">
+   
+    <meta name="copyright" content="Copyright 2023 Bilal Rasheed">
     <title>E-Store</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 

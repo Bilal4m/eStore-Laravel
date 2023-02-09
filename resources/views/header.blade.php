@@ -21,81 +21,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 
-{{-- // navbar section --}}
-{{-- <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="/"><i class="fa-solid fa-shop me-2"></i> <strong>E-STORE</strong></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-   
-      
-        <ul class="navbar-nav ms-auto ">
-          <form action="/search">
-            <li class="nav-item">     
-                      <div class="input-group">
-                          <input class="form-control border-end-0 border" type="search"  name="query" value="search" id="example-search-input">
-                          <span class="input-group-append">
-                              <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="button submit">
-                                  <i class="fa fa-search"></i>
-                              </button>
-                          </span>
-                      </div>
-            </li>
-          </form>
-          
-          <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/">Home-1</a>
-          </li>
-          @if ($total > 0)
-          <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/cart_list"><i class="fa-solid fa-cart-shopping me-1"></i>Cart({{$total}})</a>
-          </li>
-          @else
-          <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/emptycart"><i class="fa-solid fa-cart-shopping me-1"></i>Cart</a>
-          </li>
-          @endif
-         
-        
-          @if (Session::has('user')) 
-          <li class="nav-item dropdown">
-            <a class="nav-link mx-1 text-uppercase dropdown-toggle" data-toggle="dropdown" href="#"> {{session('user')['user_name']}}        
-               <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/logout">Logout</a></li> 
-              @if($totalOrders>0 )
-              <li><a href="/myorders">My-Orders</a></li> 
-              <li><a href="/generate-pdf">View PDF</a></li> 
-              
-              @else
-              <li><a href="/noOrder">My-Orders</a></li> 
-            
-              @endif
-
-            </ul>
-      
-          </li>
-          
-    
-          @else 
-          <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/login"  data-toggle="modal" data-target="#exampleModalCenterUserLogin" ><i class="fa-solid fa-circle-user me-1"></i>Login</a>
-          </li>
-          
-          
-          <li class="nav-item">
-            <a class="nav-link mx-1 text-uppercase" href="/admin_login"  data-toggle="modal" data-target="#exampleModalCenterAdminLogin" ><i class="fa-solid fa-circle-user me-1"></i>Admin</a>
-          </li>
-          @endif  
-
-        </ul>
-      </div>
-    </div>
-  </nav> --}}
-
-
-  {{-- new nav --}}
   <nav>
     <div class="menu-icon">
        <span class="fas fa-bars"></span>
@@ -152,80 +77,7 @@
    
  </nav>
  
-
-  
-  {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Login Here</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form  action="login" method="post">
-            @csrf
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Email Address:</label>
-              <input type="email" class="form-control" id="recipient-name" name="user_email">
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="recipient-name" name="user_password">
-            </div>
-           
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-        <div class="modal-footer" >Don't Have an account?
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalmy" target="_blank" data-whatever="@getbootstrap" data-dismiss="modal">Open modal for @getbootstrap</button>
-      </div>
-      </form>
-      </div>
-    </div>
-  </div> --}}
-
-
- 
-  
-  {{-- <div class="modal fade" id="exampleModalmy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form  action="register" method="post">
-            @csrf
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Name:</label>
-              <input type="text" class="form-control" id="recipient-name" name="user_name">
-            </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email Address:</label>
-            <input type="email" class="form-control" id="recipient-name" name="user_email">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Password:</label>
-            <input type="password" class="form-control" id="recipient-name" name="user_password">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-      </form>
-      </div>
-    </div>
-  </div> --}}
-
+ {{-- modal pop-up for user sign-in  --}}
 		
 		<div class="modal user-login-model fade" id="exampleModalCenterUserLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -268,6 +120,10 @@
 		    </div>
 		  </div>
 		</div>
+
+
+ {{-- modal pop-up for user sign-up  --}}
+
 
     <div class="modal user-signup-model fade" id="exampleModalCenterUserSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -312,7 +168,7 @@
 		  </div>
 		</div>
 
-    {{-- // admin pop up model --}}
+{{-- // admin pop up model --}}
     <div class="modal user-admin-model fade" id="exampleModalCenterAdminLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
